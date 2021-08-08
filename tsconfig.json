@@ -18,9 +18,7 @@
     "forceConsistentCasingInFileNames": true,
     "experimentalDecorators": true,
     "paths": {
-      "@config/*": ["config/*"],
-      "@database/*": ["database"],
-      "@providers/*": ["providers/implementations/*"]
+      "@config": ["Config"]
     }
   },
 
