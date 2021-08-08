@@ -1,0 +1,28 @@
+{
+  "compilerOptions": {
+    "sourceMap": true,
+    "rootDir": "src",
+
+    // Strict Type-Checking Options 
+    "strict": true,
+    "noImplicitAny": false,
+
+    // Module Resolution Options
+    "moduleResolution": "node",
+    "baseUrl": "src",
+    "esModuleInterop": true,
+    "allowJs": true,
+
+    // Advanced Options
+    "skipLibCheck": true,
+    "forceConsistentCasingInFileNames": true,
+    "experimentalDecorators": true,
+    "paths": {
+      "@config/*": ["config/*"],
+      "@database/*": ["database"],
+      "@providers/*": ["providers/implementations/*"]
+    }
+  },
+
+  "exclude": ["node_modules"]
+}
