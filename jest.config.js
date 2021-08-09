@@ -5,6 +5,6 @@ module.exports = {
     '.*\\.ts$': 'ts-jest' // Converte qualquer teste do TypeScript para o JavaScript
   },
   moduleNameMapper: {
-    "@config/(.*)": "<rootDir>/src/Config/$1"
+    "@config/(.*)": "<rootDir>/src/config/$1"
   }
 }

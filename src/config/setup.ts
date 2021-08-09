@@ -1,5 +1,5 @@
 import { Telegraf } from "telegraf"
-import { messages } from "@config/index"
+import { messages } from "./"
 import { config } from "dotenv"
 import chalk from "chalk"
 config()

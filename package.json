@@ -4,7 +4,8 @@
   "description": "A Telegram bot made in TypeScript and Python",
   "main": "src/main.ts",
   "scripts": {
-    "test": "jest --no-cache --watchAll"
+    "test": "jest --no-cache --watchAll",
+    "start": "cls && ts-node-dev --trace-warnings --transpile-only --ignore-watch node_modules src/main.ts"
   },
   "author": "Weslley Borges",
   "license": "MIT",
