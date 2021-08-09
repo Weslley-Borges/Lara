@@ -8,7 +8,6 @@ bot.telegram.getMe().then(() => {
   
   try {
     taskLogger.logStep('⚙️','Services', 'START', 'Iniciando serviços...')
-    mongoose.connect(process.argv[3],{useNewUrlParser: true, useUnifiedTopology: true})
     taskLogger.logStep('✅','Services', 'END', 'Serviços iniciados com sucesso!')
     taskLogger.logStep('✅','Init', 'END', 'Lara iniciada com sucesso!')
 

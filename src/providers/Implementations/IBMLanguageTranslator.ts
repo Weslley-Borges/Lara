@@ -7,19 +7,20 @@ class IBMLanguageTranslationProvider implements ITranslationProvider {
   private readonly instance = new LanguageTranslatorV3({
     version: '2018-05-01',
     authenticator: new IamAuthenticator({
-      apikey: String(process.env.IBM_WATSON_TRANSLATE_TOKEN)
+      apikey: String(process.env.IBM_TRANSLATE_APIKEY)||" "
     }),
-    serviceUrl: String(process.env.IBM_WATSON_TRANSLATE_HOST)
+    serviceUrl: String(process.env.IBM_TRANSLATE_HOST)||" "
   })
 
+
   public async translate(text:any, translateMethod:string): Promise<string> {
-    return await this.instance.translate({text:text, modelId:translateMethod})
-      .then(translate => {return translate.result.translations[0].translation})
+    const translate = await this.instance.translate({text:text, modelId:translateMethod})
+    return translate.result.translations[0].translation
   }
   public async identifyLanguage(text:any): Promise<any> {
-    return await this.instance.identify(text)
-      .then(process => {return process.result.languages})
+    const result = await this.instance.identify(text)
+    return result.result.languages
   }
 }
 
-export const ibmProvider = new IBMLanguageTranslationProvider
+export const ibmTranslationProvider = new IBMLanguageTranslationProvider

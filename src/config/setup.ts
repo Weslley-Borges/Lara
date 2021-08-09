@@ -1,9 +1,8 @@
 import { Telegraf } from "telegraf"
 import { messages } from "./"
-import { config } from "dotenv"
 import chalk from "chalk"
 import { TaskLogger } from "../helpers"
-config()
+require("dotenv").config()
 
 
 function initialize_bot(): Telegraf {
