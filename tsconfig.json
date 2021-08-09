@@ -5,7 +5,7 @@
 
     // Strict Type-Checking Options 
     "strict": true,
-    "noImplicitAny": false,
+    "noImplicitAny": true,
 
     // Module Resolution Options
     "moduleResolution": "node",
@@ -18,7 +18,8 @@
     "forceConsistentCasingInFileNames": true,
     "experimentalDecorators": true,
     "paths": {
-      "@config/*": ["config/*"]
+      "@config": ["config"],
+      "@helpers": ["helpers"]
     }
   },
 
