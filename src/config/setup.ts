@@ -2,6 +2,7 @@ import { Telegraf } from "telegraf"
 import { messages } from "./"
 import { config } from "dotenv"
 import chalk from "chalk"
+import { TaskLogger } from "../helpers"
 config()
 
 
@@ -22,3 +23,4 @@ function initialize_bot(): Telegraf {
 
 export const bot = initialize_bot()
 export const prefix = "!"
+export const taskLogger = new TaskLogger
