@@ -6,7 +6,9 @@ import fs from "fs"
 
 class IBMTextToSpeechProvider implements ISpeechToTextProvider {
   private readonly textToSpeech = new TextToSpeech({
-    authenticator: new IamAuthenticator({apikey: String(process.env.IBM_TEXT_TO_SPEECH_TOKEN)}),
+    authenticator: new IamAuthenticator({
+      apikey: String(process.env.IBM_TEXT_TO_SPEECH_TOKEN)
+    }),
     serviceUrl: process.env.IBM_TEXT_TO_SPEECH_HOST
   })
 

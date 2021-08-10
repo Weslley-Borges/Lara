@@ -1,4 +1,4 @@
-import { ITranslationProvider } from "../../dtos/providers"
+import { ITranslationProvider } from "@dtos"
 import { IamAuthenticator } from "ibm-watson/auth"
 import LanguageTranslatorV3 from "ibm-watson/language-translator/v3"
 

@@ -20,7 +20,8 @@
     "paths": {
       "@config": ["config"],
       "@providers/*": ["providers/implementations/*"],
-      "@helpers": ["helpers"]
+      "@helpers": ["helpers"],
+      "@dtos": ["dtos"]
     }
   },
 

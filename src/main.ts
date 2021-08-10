@@ -1,8 +1,8 @@
 import { bot, taskLogger } from "@config"
-import { send_response } from "./helpers"
+import { send_response } from "@helpers"
 import mongoose from "mongoose"
 
-
+ 
 bot.telegram.getMe().then(() => {
   taskLogger.logStep('⚙️','Init', 'START', `Iniciando o bot de ${process.argv[2]}`)
   
@@ -11,9 +11,7 @@ bot.telegram.getMe().then(() => {
     taskLogger.logStep('✅','Services', 'END', 'Serviços iniciados com sucesso!')
     taskLogger.logStep('✅','Init', 'END', 'Lara iniciada com sucesso!')
 
-  } catch(e) {
-    taskLogger.logStep('❌','Services', 'ERROR', 'Erro ao iniciar serviços!')
-  }
+  } catch(e) { taskLogger.logStep('❌','Services', 'ERROR', 'Erro ao iniciar serviços!') }
 })
 
 bot.start(ctx => {
@@ -21,8 +19,7 @@ bot.start(ctx => {
     text: 
       `<b>Oi! Eu me chamo Lara</b>\n`+
       `Eu sou um bot criado para fornecer serviços\n\n`+
-      `Digite <b><i>!menu</i></b> para ver os meus comandos!`,
-    markup:{inline_keyboard:[[{text:"Grupo de Suporte", url:"https://t.me/joinchat/ze1_02sqjKowN2Nh"}]]}
+      `Digite <b><i>!menu</i></b> para ver os meus comandos!`
   }])
 })
 
