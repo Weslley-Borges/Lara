@@ -21,7 +21,9 @@
       "@config": ["config"],
       "@providers/*": ["providers/implementations/*"],
       "@helpers": ["helpers"],
-      "@dtos": ["dtos"]
+      "@dtos": ["dtos"],
+      "@temp/*": ["temp/*"],
+      "@database": ["database"]
     }
   },
 

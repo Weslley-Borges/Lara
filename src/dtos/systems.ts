@@ -10,6 +10,10 @@ export module Response {
     send_many: boolean
     malicious?: boolean
   }
+  export type Verification = {
+    messages: Message[]
+    malicious: boolean
+  }
 }
 
 export module Command {
