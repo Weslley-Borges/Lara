@@ -39,3 +39,9 @@ export module Command {
     error_message:string
   }
 }
+
+export interface IOptionsDTO {
+  field: "group_tags"|"group_links"|"group_welcome",
+  method: string|null,
+  value:any
+}
