@@ -3,6 +3,7 @@
 - [Report an Error or Bug](#Report-an-Error-or-Bug)
 - [Request a Feature](#Report-a-Feature)
 - [Contribute code](#Contribute-code)
+- [Creating message contexts for the chat system](Creating-message-contexts-for-the-chat-system)
 
 ---
 
@@ -36,3 +37,26 @@ To contribute the code:
 - Write tests that verify that your contribution works as expected.
 - Go to https://github.com/Weslley-Borges/Lara/pulls and open a new pull request with your changes.
 - If your PR is connected to an open issue, add a line in your PR description that says `Fixes: #123`, where` #123` is the number of the issue you are fixing.
+
+## Creating message contexts for the chat system
+Here we have an example context:
+````
+[
+  {
+    "context": "Oi",
+    "responses": [
+      "Olá!",
+      "Oi!",
+      "Eae, tudo em cima?",
+      "👋"
+    ],
+    "pos_responses": [
+      "O que você está fazendo?",
+      "Bora dar o nosso melhor hoje!"
+    ]
+  }
+]
+```` 
+How to contribute:
+- Create one or several of these contexts (have fun),
+- Open a new Issue with these contexts, maintainers will review them
