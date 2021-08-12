@@ -27,5 +27,4 @@ const scrapingSchema = new Schema(
   {_id: false, autoIndex: false }
 )
 
-
 export const Scraping: Model<IScraping> = model('scraping_websites', scrapingSchema)

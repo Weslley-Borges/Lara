@@ -11,7 +11,7 @@ export class CommandUseCase {
     const status = await this.commandRepository.get_status(ctx)
 
     if (status.command == null) return [{text:status.error_message}]
-    if (status.adm_func && !status.is_adm) return [{text:messages.isNot_adm}]
+    if (status.command.status == "ADM" && !status.is_adm) return [{text:messages.isNot_adm}]
 
     return this.commandRepository.return_result(
       ctx, {

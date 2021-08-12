@@ -2,6 +2,7 @@ import { IChatRepository } from "./IChatRepository"
 import { greetings } from "@config"
 import { Response } from "@dtos"
 import axios from "axios"
+import { compareTwoStrings } from "string-similarity"
 
 
 export class ChatRepository implements IChatRepository {
@@ -13,7 +14,7 @@ export class ChatRepository implements IChatRepository {
         data:{message:ctx.message?.text}
       })).data.results
     }
-    return response.map((msg) => {return {text:msg.replace('PERSON', ctx.from.first_name)}})
+    return response.map(msg => {return {text:msg}})
 
 
     function get_greetings(message:string): string[] {
@@ -21,7 +22,7 @@ export class ChatRepository implements IChatRepository {
       const hour = Number(now.toLocaleString().split(" ")[1].split(":")[0])
   
       for (let i=0; i < greetings.length; i++) {
-        if (greetings[i].context.indexOf(message.toLowerCase()) == -1) continue
+        if(compareTwoStrings(greetings[i].context, message.toLowerCase()) < .65) continue
         
         for (let x=0; x < greetings[i].responses.length; x++) {
           const responses = greetings[i].responses        

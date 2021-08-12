@@ -16,4 +16,4 @@ const tagSchema = new Schema(
   {_id: false, autoIndex: false }
 )
 
-export const Tag: Model<ITag> = model('tags', tagSchema)
+export const Tag: Model<ITag> = model('Tag', tagSchema)

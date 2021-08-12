@@ -5,11 +5,6 @@ export module Response {
     image?: any
     markup?: any
   }
-  export type Result = {
-    messages: Message[]|string[]
-    send_many: boolean
-    malicious?: boolean
-  }
   export type Verification = {
     messages: Message[]
     malicious: boolean
@@ -21,15 +16,16 @@ export module Command {
     args: string[]
     command: Command.Profile|undefined
     is_adm: boolean
-    adm_func: boolean|undefined
     error_message: string
   }
   export type Profile = {
     name: string
     path: string
+    status:"COMMON"|"ADM"
     emoji: string
     description: string
-    arguments: {index:number, error:string}[]
+    about: string
+    arguments: {index:number, error:string}[]|[]
   }
   export type Process = {
     args:string[],

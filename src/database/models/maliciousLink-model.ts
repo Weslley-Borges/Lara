@@ -6,7 +6,9 @@ export interface IMaliciousLink extends Document {
 }
 
 export const maliciousLinkSchema = new Schema(
-  {link_url: {type:String, required:true}},
+  {
+    link_url: {type:String, required:true}
+  },
   {_id: false, autoIndex: false }
 )
 

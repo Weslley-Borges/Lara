@@ -1,18 +1,23 @@
-export const commands = [
+import { Command } from "@dtos";
+
+
+export const commands: Command.Profile[] = [
   {
     name: "menu", 
-    path: "common/menu", 
+    path: "menu", 
+    status: "COMMON",
     emoji: "📊",
     description: "Mostra os comandos", 
     about: "Mostra os comandos do bot, dependendo do tipo de chat", 
     arguments: [],
 
-  },
+  }
   // SPOILERS, hehe
   // {
   //   name: "google", 
-  //   path: "common/search", 
+  //   path: "search", 
   //   emoji: "🔎",
+  //   status: "COMMON"
   //   description: "Pesquisa no Google", 
   //   about:
   //     "Faz uma pesquisa por conteúdos no Google\n\n"+

@@ -1,6 +1,6 @@
+import { chatController, commandController, verificationController } from "@systems"
 import { bot, prefix, taskLogger } from "@config"
 import { send_response } from "@helpers"
-import { chatController, commandController, verificationController } from "@systems"
 import mongoose from "mongoose"
  
 

@@ -46,7 +46,6 @@ export class CommandRepository implements ICommandRepository {
       args,
       command,
       is_adm:adm,
-      adm_func: command?.path.includes("/adm"),
       error_message:messages.commandNotFound.replace("COMMAND", name)
     }
   }
