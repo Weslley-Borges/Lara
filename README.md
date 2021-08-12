@@ -24,9 +24,9 @@
 
 <div style="display:flex">
   <div style="flex:33.33%; padding:5px"> 
-    <img src="./assets/img/init.png" alt="Lara's logo"/>
+    <img src="./assets/img/Init.png" alt="Lara's logo"/>
   </div>
   <div style="flex:33.33%; padding:5px"> 
-    <img src="./assets/img/chat.png" alt="Lara's logo"/>
+    <img src="./assets/img/Chat.png" alt="Lara's logo"/>
   </div>
 </div>
