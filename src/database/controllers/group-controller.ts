@@ -17,7 +17,7 @@ class GroupController {
   async insert_one(group_id:number): Promise<String> {
     return await Group.findOne({group_id: group_id})
       .exec()
-      .then(result => {
+      .then((result) => {
         if (result == null) return "Esse grupo já existe no meu sistema."
 
         Group.create({group_id: group_id})
@@ -30,7 +30,7 @@ class GroupController {
     return await Group
       .findOne({group_id: group_id})
       .exec()
-      .then(async group => {
+      .then(async (group) => {
         if (group == null) return "Esse grupo não está registrado no meu sistema."
 
         const value = options.value

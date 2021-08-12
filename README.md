@@ -21,12 +21,6 @@
 - [License](LICENSE)
 
 ---
-
-<div style="display:flex">
-  <div style="flex:33.33%; padding:5px"> 
-    <img src="./assets/img/Init.png" alt="Lara's logo"/>
-  </div>
-  <div style="flex:33.33%; padding:5px"> 
-    <img src="./assets/img/Chat.png" alt="Lara's logo"/>
-  </div>
-</div>
+## Contacts
+- E-mail: weslley.programmer@gmail.com
+- Developers group: https://t.me/joinchat/RNQAdg9_1-8wMTcx

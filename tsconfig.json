@@ -1,13 +1,14 @@
 {
   "compilerOptions": {
     "sourceMap": true,
-    "outDir": "./dist",
-    "rootDir": "./src",
+    "outDir": ".",
+    "rootDir": ".",
     "removeComments": true,
+    "target": "ES2017",
 
     // Strict Type-Checking Options 
     "strict": true,
-    "noImplicitAny": true,
+    "noImplicitAny": false,
 
     // Module Resolution Options
     "moduleResolution": "node",

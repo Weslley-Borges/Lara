@@ -2,16 +2,15 @@ module.exports = {
   roots: ["<rootDir>/src"],
   testEnvironment: "node",
   transform: {
-    '.*\\.ts$': 'ts-jest' // Converte qualquer teste do TypeScript para o JavaScript
+    '.*\\.ts$': 'ts-jest'
   },
   moduleNameMapper: {
-    "@config/(.*)": "<rootDir>/src/config/$1",
-    "@helpers/(.*)": "<rootDir>/src/helpers/$1",
-    "@config": "<rootDir>/src/config",
+    "@config": "<rootDir>/src/config/index.ts",
     "@providers/(.*)": "<rootDir>/src/providers/implementations/$1",
-    "@helpers": "<rootDir>/src/helpers",
+    "@helpers": "<rootDir>/src/helpers/index.ts",
     "@dtos": "<rootDir>/src/dtos",
     "@temp/(.*)": "<rootDir>/temp/$1",
+    "@systems": "<rootDir>/src/systems",
     "@database": "<rootDir>/src/database/index.ts"
   }
 }

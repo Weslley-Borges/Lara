@@ -24,7 +24,7 @@ export class VerificationRepository implements IVerificationRepository {
     const urls = get_links(words)
     if (urls === []) return {messages:[], malicious:false}
 
-    return maliciousLinkController.find_all().then(results => {
+    return await maliciousLinkController.find_all().then(results => {
       let result = {
         messages:[{text:`<b>PERSON</b>, não mande links maliciosos...`}],
         malicious: false

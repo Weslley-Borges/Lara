@@ -1,7 +1,7 @@
-import { Schema, model, Model, Document } from "mongoose"
+import { Schema, model } from "mongoose"
 
 
-export interface IGroup extends Document {
+export interface IGroup {
   group_id:Number
   group_welcome:String
   group_links:{text:String, url:String}[]
@@ -19,7 +19,7 @@ const memberSchema = new Schema(
   {_id: false, autoIndex: false}
 )
 
-const groupSchema = new Schema(
+const groupSchema = new Schema<IGroup>(
   {
     group_id: {type:Number, required:true},
     group_welcome: {type:String, default:"Seja bem-vindo(a), MEMBER!"},
@@ -31,4 +31,4 @@ const groupSchema = new Schema(
   {_id: false, autoIndex: false }
 )
 
-export const Group: Model<IGroup> = model('Group', groupSchema)
+export const Group = model<IGroup>('Group', groupSchema)

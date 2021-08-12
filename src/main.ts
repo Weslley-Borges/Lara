@@ -1,19 +1,13 @@
 import { chatController, commandController, verificationController } from "@systems"
-import { bot, prefix, taskLogger } from "@config"
+import { bot, messages, prefix, taskLogger } from "@config"
 import { send_response } from "@helpers"
-import mongoose from "mongoose"
+import chalk from "chalk"
  
 
 bot.telegram.getMe().then(() => {
+  console.log(chalk.cyan(messages.lara_logo+"\n"))
   taskLogger.logStep('⚙️','Init', 'START', `Iniciando o bot de ${process.argv[2]}`)
-  
-  try {
-    taskLogger.logStep('⚙️','Services', 'START', 'Iniciando serviços...')
-    mongoose.connect(process.argv[3], {useNewUrlParser:true,useUnifiedTopology:true})
-    taskLogger.logStep('✅','Services', 'END', 'Serviços iniciados com sucesso!')
-    taskLogger.logStep('✅','Init', 'END', 'Lara iniciada com sucesso!')
-
-  } catch(e) { taskLogger.logStep('❌','Services', 'ERROR', 'Erro ao iniciar serviços!') }
+  taskLogger.logStep('✅','Init', 'END', 'Lara iniciada com sucesso!')
 })
 
 bot.start(ctx => {
