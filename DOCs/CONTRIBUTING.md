@@ -31,7 +31,7 @@ We really like code commits! They are very helpful and keep the project going an
 Code contributions of virtually any size are acceptable!
 To contribute the code:
 
-- [Configure the project](SETUP.md).
+- [Configure the project](setup.md).
 - Make the necessary changes to the source code.
 - Write tests that verify that your contribution works as expected.
 - Go to https://github.com/Weslley-Borges/Lara/pulls and open a new pull request with your changes.
