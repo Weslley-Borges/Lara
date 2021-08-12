@@ -24,8 +24,12 @@ export class CommandRepository implements ICommandRepository {
           .replace("ERRORS",data.error_message)
       }]
     }
-    taskLogger.logStep('✅','Comando', 'END', `Usaram o comando ${data.command.name}`)
-    return require(`../../commands/${data.command.path}.ts`).execute(ctx, data.args)
+    try {
+      taskLogger.logStep('✅','Comando', 'END', `Usaram o comando ${data.command.name}`)
+      return require(`../../commands/${data.command.path}.ts`).execute(ctx, data.args)
+    } catch(e) {
+      return [{text:"Eita, parece que houve um erro no sistema de comandos..."}]
+    }
   }
 
   async get_status(ctx:any): Promise<Command.Status> {
@@ -39,9 +43,7 @@ export class CommandRepository implements ICommandRepository {
       : false
 
     return {
-      type: "FOUND",
       args,
-      name,
       command,
       is_adm:adm,
       adm_func: command?.path.includes("/adm"),

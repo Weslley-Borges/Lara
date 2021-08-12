@@ -1,7 +1,9 @@
 {
   "compilerOptions": {
     "sourceMap": true,
-    "rootDir": "src",
+    "outDir": "./dist",
+    "rootDir": "./src",
+    "removeComments": true,
 
     // Strict Type-Checking Options 
     "strict": true,
@@ -9,7 +11,7 @@
 
     // Module Resolution Options
     "moduleResolution": "node",
-    "baseUrl": "src",
+    "baseUrl": ".",
     "esModuleInterop": true,
     "allowJs": true,
 
@@ -18,14 +20,15 @@
     "forceConsistentCasingInFileNames": true,
     "experimentalDecorators": true,
     "paths": {
-      "@config": ["config"],
-      "@providers/*": ["providers/implementations/*"],
-      "@helpers": ["helpers"],
-      "@dtos": ["dtos"],
-      "@temp/*": ["temp/*"],
-      "@database": ["database"]
+      "@config": ["./src/config"],
+      "@providers/*": ["./src/providers/implementations/*"],
+      "@helpers": ["./src/helpers"],
+      "@dtos": ["./src/dtos"],
+      "@temp/*": ["./temp/*"],
+      "@systems": ["./src/systems"],
+      "@database": ["./src/database"]
     }
   },
-
-  "exclude": ["node_modules"]
+  "include": ["./src", "./temp"],
+  "exclude": ["./node_modules"]
 }

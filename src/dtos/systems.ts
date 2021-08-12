@@ -18,9 +18,7 @@ export module Response {
 
 export module Command {
   export type Status = {
-    type: "FOUND"|"NOT FOUND"
     args: string[]
-    name: string
     command: Command.Profile|undefined
     is_adm: boolean
     adm_func: boolean|undefined

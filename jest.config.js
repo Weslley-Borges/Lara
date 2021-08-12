@@ -11,7 +11,7 @@ module.exports = {
     "@providers/(.*)": "<rootDir>/src/providers/implementations/$1",
     "@helpers": "<rootDir>/src/helpers",
     "@dtos": "<rootDir>/src/dtos",
-    "@temp/(.*)": "<rootDir>/src/temp/$1",
+    "@temp/(.*)": "<rootDir>/temp/$1",
     "@database": "<rootDir>/src/database/index.ts"
   }
 }

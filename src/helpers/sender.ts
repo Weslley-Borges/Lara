@@ -31,11 +31,20 @@ function send_one(ctx:any, msg:Response.Message) {
   else chat = String(msg.chat)
 
   try {
-    if (msg.image)
-      tg.sendPhoto(chat, msg.image, {caption:msg.text, parse_mode:"HTML", reply_markup:msg.markup})
+    let message = msg.text
+    if (msg.text != undefined) message = replace_holders(ctx, msg.text)
 
-    else if (msg.text)
-      tg.sendMessage(chat, msg.text, {parse_mode:"HTML", reply_markup:msg.markup})
+    if (msg.image){
+      tg.sendPhoto(chat, msg.image, {caption:message, parse_mode:"HTML", reply_markup:msg.markup})
+
+    } else if (msg.text) {
+      tg.sendMessage(chat, message, {parse_mode:"HTML", reply_markup:msg.markup})
+    }
 
   } catch(e) {ctx.reply("Opa, não consegui enviar a mensagem.")}
+}
+
+function replace_holders(ctx:any, message:string) {
+  return message
+    .replace("PERSON", ctx.from.first_name)
 }

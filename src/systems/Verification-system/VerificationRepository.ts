@@ -26,7 +26,7 @@ export class VerificationRepository implements IVerificationRepository {
 
     return maliciousLinkController.find_all().then(results => {
       let result = {
-        messages:[{text:`<b>PERSON</b>, não mande lsinks maliciosos...`}],
+        messages:[{text:`<b>PERSON</b>, não mande links maliciosos...`}],
         malicious: false
       }
 
