@@ -11,6 +11,7 @@ module.exports = {
     "@dtos": "<rootDir>/src/dtos",
     "@temp/(.*)": "<rootDir>/temp/$1",
     "@systems": "<rootDir>/src/systems",
-    "@database": "<rootDir>/src/database/index.ts"
+    "@database": "<rootDir>/src/database/index.ts",
+    "@actions": "<rootDir>/src/actions/index.ts"
   }
 }

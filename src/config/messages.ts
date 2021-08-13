@@ -18,7 +18,6 @@ export const messages = {
 
   commandNotFound: "🤔 Ue, esse comando não existe no meu sistema.",
   isNot_adm: "😅 Você precisa ser um ADM para usar esse comando...",
-  isNot_gp_owner: "😠 Ei, você precisa ser o dono do grupo para usar o comando.",
   isNot_group: "😠 Ei, você precisa estar em um grupo para usar esse comando.",
   countryNotFound: "País não encontrado (tente usar o nome em inglês)",
   lara_join:
@@ -28,8 +27,7 @@ export const messages = {
     "- Me torne administradora do grupo\n"+
     "- Inicie uma converna no meu privado\n\n"+
     "Dito isso, espero que goste dos meus serviços, use o comando <code>!menu</code> para ver o meu menu de comandos",
+  member_join: `Oie PERSON, tudo bem? Fale um pouco sobre você, para fazer a sua verificação no grupo.\nVocê tem 2 minutos antes de ser expulso!`,
   chat_not_initialized:
     "Não consegui enviar a mensagem, é um chat privado e o usuário não iniciou uma conversa comigo. Por favor, inicie uma conversa no privado.",
-  verifying_member: 
-    "<b>Olá @MEMBER</b>, Você tem 2 minutos para fazer a verificação."
 }

@@ -10,7 +10,7 @@ class GroupController {
   async find_one(group_id:number): Promise<IGroup|null> {
     return await Group.findOne({group_id: group_id}).exec()
   }
-  async delete_on(group_id:number): Promise<void> {
+  async delete_one(group_id:number): Promise<void> {
     await Group.deleteOne({group_id: group_id})
   }
 

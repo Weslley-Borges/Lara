@@ -5,9 +5,10 @@ import fs from "fs"
 import dotenv from "dotenv"
 dotenv.config();
 
+
 (async () => {
-  await mongoose.set('useNewUrlParser', true)
-  await mongoose.set('useUnifiedTopology', true)
+  mongoose.set('useNewUrlParser', true)
+  mongoose.set('useUnifiedTopology', true)
   await mongoose.connect(String(process.env.PROD_DATABASE))
 })()
 
@@ -22,6 +23,7 @@ function initialize_bot(): Telegraf {
       return new Telegraf(String(process.env.BOT_TOKEN))
   }
 }
+
 
 export const greetings = JSON.parse(String(fs.readFileSync("./src/config/greetings.json")))
 export const bot = initialize_bot()

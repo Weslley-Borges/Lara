@@ -27,7 +27,8 @@
       "@dtos": ["./src/dtos"],
       "@temp/*": ["./temp/*"],
       "@systems": ["./src/systems"],
-      "@database": ["./src/database"]
+      "@database": ["./src/database"],
+      "@actions": ["./src/actions"]
     }
   },
   "include": ["./src", "./temp"],
