@@ -4,7 +4,7 @@
   "description": "A Telegram bot made in TypeScript and Python",
   "main": "src/main.ts",
   "scripts": {
-    "test": "cls && jest --no-cache --coverage --watchAll",
+    "test": "cls && jest --no-cache --watchAll",
     "start": "cls && ts-node-dev --trace-warnings --transpile-only --ignore-watch node_modules -r tsconfig-paths/register src/main.ts"
   },
   "jest": {

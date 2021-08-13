@@ -16,7 +16,7 @@ export const messages = {
     "ERRORS\n\n"+
     "<i>💡Use o comando 'PREFIXabout ARGS' para aprender a usar esse comando.</i>",
 
-  commandNotFound: "🤔 Ue, nunca vi um comando chamado 'COMMAND' no meu sistema.",
+  commandNotFound: "🤔 Ue, esse comando não existe no meu sistema.",
   isNot_adm: "😅 Você precisa ser um ADM para usar esse comando...",
   isNot_gp_owner: "😠 Ei, você precisa ser o dono do grupo para usar o comando.",
   isNot_group: "😠 Ei, você precisa estar em um grupo para usar esse comando.",

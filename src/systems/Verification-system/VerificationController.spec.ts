@@ -2,16 +2,20 @@ import { verificationController } from "@systems"
 import { context } from "@temp/data/context"
 
 
-describe("Verification Controller", () => {
+describe("Verification System", () => {
   let my_context = context
 
-  test("Should return false for 'malicious'", async () => {
+  test("Should return false for 'malicious'", () => {
     my_context.message.text = "Eae"
-    expect((await verificationController.handle(my_context)).malicious).toBe(false)
+    return verificationController.handle(my_context).then(data => {
+      expect(data.malicious).toBe(false)
+    })
   })
 
-  test("Should return true for 'malicious'", async () => {
+  test("Should return true for 'malicious'", () => {
     my_context.message.text = "tiktok.app"
-    expect((await verificationController.handle(my_context)).malicious).toBe(true)
+    return verificationController.handle(my_context).then(data => {
+      expect(data.malicious).toBe(true)
+    })
   })
 })

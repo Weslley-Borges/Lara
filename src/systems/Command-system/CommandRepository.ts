@@ -46,7 +46,7 @@ export class CommandRepository implements ICommandRepository {
       args,
       command,
       is_adm:adm,
-      error_message:messages.commandNotFound.replace("COMMAND", name)
+      error_message:messages.commandNotFound
     }
   }
 }
