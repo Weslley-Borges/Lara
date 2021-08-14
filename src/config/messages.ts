@@ -18,6 +18,7 @@ export const messages = {
 
   commandNotFound: "🤔 Ue, esse comando não existe no meu sistema.",
   isNot_adm: "😅 Você precisa ser um ADM para usar esse comando...",
+  lara_isNot_adm: "😅 Opa, eu preciso ser ADM para executar essa função...",
   isNot_group: "😠 Ei, você precisa estar em um grupo para usar esse comando.",
   countryNotFound: "País não encontrado (tente usar o nome em inglês)",
   lara_join:

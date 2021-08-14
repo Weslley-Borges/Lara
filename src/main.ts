@@ -49,7 +49,7 @@ bot.on('new_chat_members', ctx => {
   ctx.update.message.new_chat_members.forEach(async new_member => {
     if (ctx.chat.type.includes("group")) {
       if (new_member.id === bot.botInfo?.id) return send_response(ctx, [{text:messages.lara_join}])
-      await add_join_verification(ctx)
+      return send_response(ctx, await add_join_verification(ctx))
     }
   })
 })

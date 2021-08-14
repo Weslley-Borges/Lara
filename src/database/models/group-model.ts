@@ -14,7 +14,8 @@ const memberSchema = new Schema(
   {
     id: {type:Number, required:true, ref:"User"},
     messages_count: {types:Number, default:0},
-    last_update: {type:Date, default:new Date()}
+    last_update: {type:Date, default:new Date()},
+    warns: {type:Number, deafult:0}
   },
   {_id: false, autoIndex: false}
 )
