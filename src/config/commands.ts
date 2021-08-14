@@ -10,7 +10,17 @@ export const commands: Command.Profile[] = [
     description: "Mostra os comandos", 
     about: "Mostra os comandos do bot, dependendo do tipo de chat", 
     arguments: [],
-
+  },
+  {
+    name: "ban", 
+    path: "moderate", 
+    status: "ADM",
+    emoji: "❌",
+    description: "Bane um membro", 
+    about: 
+      "Bane um membro do grupo\n"+
+      "✅ Responda uma mensagem do membro que quer expulsar usando o comando.", 
+    arguments: [],
   }
   // SPOILERS, hehe
   // {
