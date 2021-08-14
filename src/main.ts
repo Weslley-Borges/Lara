@@ -1,8 +1,8 @@
 import { chatController, commandController, verificationController } from "@systems"
-import { groupController } from "@database"
-import { bot, messages, prefix, taskLogger } from "@config"
-import { send_response } from "@helpers"
 import { validate_join_verification, add_join_verification } from "@actions"
+import { bot, messages, prefix, taskLogger } from "@config"
+import { groupController } from "@database"
+import { send_response } from "@helpers"
 import chalk from "chalk"
  
 
@@ -26,10 +26,7 @@ bot.on('text', async ctx => {
   const verification = await verificationController.handle(ctx)
   if (verification.malicious) return send_response(ctx, verification.messages)
 
-  await validate_join_verification(ctx).then(result => {
-    if (!result) return
-    send_response(ctx, result)
-  })
+  await validate_join_verification(ctx).then(result => {if (result) send_response(ctx, result)})
 
   const result = ctx.message.text.startsWith(prefix)
     ? await commandController.handle(ctx)
@@ -40,9 +37,14 @@ bot.on('text', async ctx => {
 
 
 bot.on('left_chat_member', async ctx => {
-  if (ctx.update.message.left_chat_member.id === bot.botInfo?.id && ctx.chat.type != "private") {
-    await groupController.delete_one(ctx.chat.id)
-    taskLogger.logStep('😢','REMOVED', 'ACTION', "Fui removida de "+ctx.chat.title)
+  if (ctx.chat.type !== "private") {
+    if (ctx.update.message.left_chat_member.id === bot.botInfo?.id) {
+      await groupController.delete_one(ctx.chat.id)
+      taskLogger.logStep('😢','REMOVED', 'ACTION', "Fui removida de "+ctx.chat.title)
+
+    } else if (ctx.update.message.left_chat_member.is_bot) {
+      return send_response(ctx, [{text: "Pronto, menos concorrência."}])
+    }
   }
 })
 bot.on('new_chat_members', ctx => {
