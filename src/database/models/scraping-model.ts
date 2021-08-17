@@ -1,7 +1,7 @@
-import { Schema, model } from "mongoose"
+import { Schema, model, Document } from "mongoose"
 
 
-export interface IScraping {
+export interface IScraping extends Document{
   site_name: String
   type: String
   daily_offerts: Number
@@ -12,19 +12,16 @@ export interface IScraping {
   monthly_searchs: Number[]
   search: [string, string][]
 }
-const scrapingSchema = new Schema<IScraping>(
-  {
-    site_name: {type:String, required:true},
-    type: {type:String, required:true},
-    daily_offerts: {type:Number, required:true},
-    daily_searchs: {type:Number, required:true},
-    weekly_offerts: {type:Array, required:true},
-    weekly_searchs: {type:Array, required:true},
-    monthly_offerts: {type:Array, required:true},
-    monthly_searchs: {type:Array, required:true},
-    search: {type:Array, required:true}
-  },
-  {_id: false, autoIndex: false }
-)
+const scrapingSchema = new Schema<IScraping>({
+  site_name: {type:String, required:true},
+  type: {type:String, required:true},
+  daily_offerts: {type:Number, required:true},
+  daily_searchs: {type:Number, required:true},
+  weekly_offerts: {type:Array, required:true},
+  weekly_searchs: {type:Array, required:true},
+  monthly_offerts: {type:Array, required:true},
+  monthly_searchs: {type:Array, required:true},
+  search: {type:Array, required:true}
+})
 
 export const Scraping = model<IScraping>('scraping_websites', scrapingSchema)

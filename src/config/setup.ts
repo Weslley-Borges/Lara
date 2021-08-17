@@ -9,6 +9,7 @@ dotenv.config();
 (async () => {
   mongoose.set('useNewUrlParser', true)
   mongoose.set('useUnifiedTopology', true)
+  mongoose.set('useCreateIndex', true)
   await mongoose.connect(String(process.env.PROD_DATABASE))
 })()
 

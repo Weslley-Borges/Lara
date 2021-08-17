@@ -3,20 +3,21 @@ import { Response } from "@dtos"
 
 export function send_response(ctx:any, responses:Response.Message[]|string[]): void {
   typeof(responses[0]) != "string"
-    ? (responses as Response.Message[])
-      .forEach(response => send_one(ctx, response))
+    ? (responses as Response.Message[]).forEach(msg => send_one(ctx, msg))
     : send_many(ctx, responses as string[])
 }
 
 function send_many(ctx:any, contents:string[]): void {
-  let stats = {message:"", count:0}
+  let to_send:string[] = []
 
   contents.forEach(content => {
-    if (stats.count !== 10) return stats = {message:stats.message+content, count:stats.count + 1}
-    send_one(ctx, {text:stats.message, chat:"PRIVATE"})
-    stats = {message:"", count:0}
+    if (to_send.length !== 10) 
+      return to_send.push(content)
+    send_one(ctx, {text:to_send.join("\n\n"), chat:"PRIVATE"})
+    return to_send = []    
   })
-  if (stats.message != "") send_one(ctx, {text:stats.message, chat:"PRIVATE"})
+
+  if (to_send.length !== 0) send_one(ctx, {text:to_send.join("\n\n"), chat:"PRIVATE"})
 } 
 
 function send_one(ctx:any, msg:Response.Message): void {  

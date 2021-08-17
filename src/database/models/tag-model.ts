@@ -6,12 +6,9 @@ export interface ITag extends Document{
   tag_uses: Number
 }
 
-const tagSchema = new Schema<ITag>(
-  {
-    tag_name: {type: String, required:true, unique:true},
-    tag_uses: {type: Number}
-  },
-  {autoIndex: false }
-)
+const tagSchema = new Schema<ITag>({
+  tag_name: {type: String, required:true, unique:true},
+  tag_uses: {type: Number}
+})
 
 export const Tag = model<ITag>('Tag', tagSchema)

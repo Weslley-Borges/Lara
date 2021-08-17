@@ -38,11 +38,12 @@ bot.on('text', async ctx => {
 
 bot.on('left_chat_member', async ctx => {
   if (ctx.chat.type !== "private") {
-    if (ctx.update.message.left_chat_member.id === bot.botInfo?.id) {
+    const member = ctx.update.message.left_chat_member
+
+    if (member.id === bot.botInfo?.id) {
       await groupController.delete_one(ctx.chat.id)
       taskLogger.logStep('😢','REMOVED', 'ACTION', "Fui removida de "+ctx.chat.title)
-
-    } else if (ctx.update.message.left_chat_member.is_bot) {
+    } else if (member.is_bot) {
       return send_response(ctx, [{text: "Pronto, menos concorrência."}])
     }
   }
