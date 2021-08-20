@@ -14,15 +14,16 @@ class GroupController {
     await Group.deleteOne({group_id: group_id})
   }
 
-  async insert_one(group_id:number): Promise<String> {
+  async insert_one(group_id:number): Promise<Boolean> {
     return await Group.findOne({group_id: group_id})
       .exec()
       .then((result) => {
-        if (result == null) return "Esse grupo já existe no meu sistema."
+        if (!result) return false
 
-        Group.create({group_id: group_id})
-        taskLogger.logStep('🎉','New Group', 'END', `O grupo ${group_id} foi registrado!`)
-        return "<b>Parabéns!</b> O grupo está registrado no meu sistema!"
+        return Group.create({group_id: group_id}).then(() => {
+          taskLogger.logStep('🎉','New Group', 'END', `O grupo ${group_id} foi registrado!`)
+          return true
+        })
       })
   }
 

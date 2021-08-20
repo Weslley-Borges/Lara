@@ -5,23 +5,10 @@ import { Response } from "@dtos"
 
 
 export class VerificationRepository implements IVerificationRepository {
-  async verify_message_content(words:string[]): Promise<Response.Verification> {
-    let parts = ['https://', 'http://', '.com', '.app', 'www.']
+  parts = ['https://', 'http://', '.com', '.app', 'www.']
 
-    function get_links(words:string[]): string[] {
-      words = words.join(' ').toLowerCase().split(' ')
-      let urls:string[] = []
-  
-      words.forEach(word => {
-        parts.forEach(part => {
-          if (word.includes(part) && urls.indexOf(word) === -1)
-            urls.push(word)
-        })
-      })
-      return urls
-    }
-
-    const urls = get_links(words)
+  async find_invalid_links(words:string[]): Promise<Response.Verification> {
+    const urls = this.get_message_links(words)
     if (urls === []) return {messages:[], malicious:false}
 
     return await maliciousLinkController.find_all().then(results => {
@@ -33,11 +20,11 @@ export class VerificationRepository implements IVerificationRepository {
       if (results == null) return result
 
       const db_links = results.map(link => {
-        parts.forEach(part => link.link_url = link.link_url.replace(part, ''))
+        this.parts.forEach(part => link.link_url = link.link_url.replace(part, ''))
         return link.link_url.split("/")[0].toLowerCase()
       })
       const uris = urls.map(url => {
-        parts.forEach(part => url = url.replace(part, ''))
+        this.parts.forEach(part => url = url.replace(part, ''))
         return url.split("/")[0]
       })
 
@@ -48,5 +35,17 @@ export class VerificationRepository implements IVerificationRepository {
       }
       return result
     })
+  }
+  get_message_links(words:string[]): string[] {
+    words = words.join(' ').toLowerCase().split(' ')
+    let urls:string[] = []
+
+    words.forEach(word => {
+      this.parts.forEach(part => {
+        if (word.includes(part) && urls.indexOf(word) === -1)
+          urls.push(word)
+      })
+    })
+    return urls
   }
 }

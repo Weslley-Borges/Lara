@@ -1,7 +1,7 @@
 export module Response {
   export type Message = {
     text?: string
-    chat?: string|number
+    chat?: string
     image?: any
     markup?: any
   }

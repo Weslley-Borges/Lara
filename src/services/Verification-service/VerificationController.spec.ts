@@ -1,4 +1,4 @@
-import { verificationController } from "@systems"
+import { verificationController } from "@services"
 import { context } from "@temp/data/context"
 
 

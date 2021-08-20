@@ -15,6 +15,7 @@ export async function execute(ctx:any, args:string[]) {
       ctx.kickChatMember(to_ban)
       return [{text:`O membro ${member.user.id} (${member.user.first_name}) foi expulso.`}]
     } catch(e) {
+      console.log(e)
       return [{text:"Houve um erro nesse comando."}]
     }
   }

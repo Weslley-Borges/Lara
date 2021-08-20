@@ -10,7 +10,7 @@ module.exports = {
     "@helpers": "<rootDir>/src/helpers/index.ts",
     "@dtos": "<rootDir>/src/dtos",
     "@temp/(.*)": "<rootDir>/temp/$1",
-    "@systems": "<rootDir>/src/systems",
+    "@services": "<rootDir>/src/services/index.ts",
     "@database": "<rootDir>/src/database/index.ts",
     "@actions": "<rootDir>/src/actions/index.ts"
   }

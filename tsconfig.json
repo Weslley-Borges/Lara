@@ -26,7 +26,7 @@
       "@helpers": ["./src/helpers"],
       "@dtos": ["./src/dtos"],
       "@temp/*": ["./temp/*"],
-      "@systems": ["./src/systems"],
+      "@services": ["./src/services"],
       "@database": ["./src/database"],
       "@actions": ["./src/actions"]
     }

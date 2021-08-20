@@ -1,4 +1,4 @@
-import { commandController } from "@systems"
+import { commandController } from "@services"
 import { context } from "@temp/data/context"
 
 

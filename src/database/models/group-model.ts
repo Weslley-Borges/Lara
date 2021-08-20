@@ -34,7 +34,7 @@ const memberSchema = new Schema({
 
 const groupSchema = new Schema<IGroup>({
   group_id: {type:Number, required:true},
-  group_welcome: {type:String, default:"Seja bem-vindo(a), MEMBER!"},
+  group_welcome: {type:String, default:"Seja bem-vindo(a), PERSON!"},
   group_links: {type:Array, default:[{text:"Suporte do Bot", url:"https://t.me/laraSuporte"}]},
   group_tags: {type:Array, default:[], ref:"Tag"},
   group_members: [memberSchema],

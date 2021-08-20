@@ -1,4 +1,4 @@
-import { chatController } from "@systems"
+import { chatController } from "@services"
 import { context } from "@temp/data/context"
 
 
