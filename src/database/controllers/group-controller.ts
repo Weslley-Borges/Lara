@@ -18,9 +18,9 @@ class GroupController {
     return await Group.findOne({group_id: group_id})
       .exec()
       .then((result) => {
-        if (!result) return false
+        if (result) return false
 
-        return Group.create({group_id: group_id}).then(() => {
+        return Group.create({group_id: group_id}).then((result) => {
           taskLogger.logStep('🎉','New Group', 'END', `O grupo ${group_id} foi registrado!`)
           return true
         })

@@ -21,11 +21,11 @@ export module Command {
   export type Profile = {
     name: string
     path: string
-    status:"COMMON"|"ADM"
+    status: "COMMON"|"ADM"
     emoji: string
     description: string
     about: string
-    arguments: {index:number, error:string}[]|[]
+    arguments: {index:number, error:string}[]
   }
   export type Process = {
     args:string[],

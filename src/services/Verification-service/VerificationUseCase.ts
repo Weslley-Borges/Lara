@@ -7,7 +7,7 @@ export class VerificationUseCase {
 
   async execute(ctx:any): Promise<Response.Verification> {
     const verifications = [
-      await this.verificationRepository.verify_message_content(ctx.message.text.split(" "))
+      await this.verificationRepository.find_invalid_links(ctx.message.text.split(" "))
     ]
 
     for (let index=0; verifications.length > index; index++) {

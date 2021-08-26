@@ -22,7 +22,6 @@
     "experimentalDecorators": true,
     "paths": {
       "@config": ["./src/config"],
-      "@providers/*": ["./src/providers/implementations/*"],
       "@helpers": ["./src/helpers"],
       "@dtos": ["./src/dtos"],
       "@temp/*": ["./temp/*"],

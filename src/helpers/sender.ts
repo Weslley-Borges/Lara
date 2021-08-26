@@ -14,7 +14,7 @@ function send_many(ctx:any, contents:string[]): void {
     if (to_send.length !== 10) 
       return to_send.push(content)
     send_one(ctx, {text:to_send.join("\n\n"), chat:"PRIVATE"})
-    return to_send = []    
+    return to_send = []
   })
 
   if (to_send.length !== 0) send_one(ctx, {text:to_send.join("\n\n"), chat:"PRIVATE"})

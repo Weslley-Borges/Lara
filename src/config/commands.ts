@@ -1,4 +1,4 @@
-import { Command } from "@dtos";
+import { Command } from "@dtos"
 
 
 export const commands: Command.Profile[] = [

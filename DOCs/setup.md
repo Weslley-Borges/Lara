@@ -5,7 +5,7 @@ In this file, I will show you how to configure the project locally.
 - [.env](#.env)
   - [BOT_TOKEN](#BOT_TOKEN)
   - [LARA_API](#LARA_API)
-  - [PROD_DATABASE](#PROD_DATABASE)
+  - [MONGO_DATABASE](#MONGO_DATABASE)
   - [IBM](#IBM)
 
 ---
@@ -31,30 +31,21 @@ LARA_API=http://127.0.0.1:5000/
 
 
 // DATABASE
-PROD_DATABASE= ***
-TEST_DATABASE= ***
+MONGO_HOST_PROD="localhost/lara"
+MONGO_USERNAME_PROD= ***
+MONGO_PASSWORD_PROD= ***
 
-
-// API URL
-IBM_TRANSLATE_HOST= ***
-IBM_TEXT_TO_SPEECH_HOST= ***
-
-// API KEY
-IBM_TRANSLATE_APIKEY= ***
-IBM_TEXT_TO_SPEECH_APIKEY= ***
+MONGO_PORT_LOCAL=27017
 ```
 Next, I'll explain what each of these variables is for:
 
 - ### <strong>BOT_TOKEN</strong>
-  O BOT_TOKEN (produção) e o BOT_TOKEN_TEST (teste) são os tokens do bot no Telegram. Você pode criar os bots a partir do [BotFather](t.me/BotFather).
+  The BOT_TOKEN (production) and the BOT_TOKEN_TEST (test) are the bot's tokens in Telegram. You can create bots from [BotFather](t.me/BotFather).
 
   Watch this [tutorial](https://www.youtube.com/watch?v=nqUp-yLH92c) to learn how to create a bot in the botfather.
 
 - ### <strong>LARA_API</strong>
   This variable is the Lara API URL, which you will run locally.
 
-- ### <strong>PROD_DATABASE</strong>
-  O PROD_DATABASE (produção) e o TEST_DATABASE (teste) são as variáveis que representam a URI do banco de dados [MongoDB](https://www.mongodb.com/).
-
-- ### <strong>IBM</strong>
-  All environment variables that start with IBM are credentials of the IBM resources we use. [See here](https://cloud.ibm.com/)
+- ### <strong>MONGO_DATABASE</strong>
+  These are the variables that represent the credentials of the database [MongoDB](https://www.mongodb.com/).

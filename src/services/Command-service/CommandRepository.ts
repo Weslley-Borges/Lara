@@ -16,14 +16,14 @@ export class CommandRepository implements ICommandRepository {
   }
 
   return_result(ctx:any, data:Command.Process): Response.Message[]|string[] {
-    if (data.error_message.length !== 0) {
+    if (data.error_message.length !== 0)
       return [{
         text:messages.argsError
           .replace("PREFIX",prefix)
           .replace("ARGS",data.command.name)
           .replace("ERRORS",data.error_message)
       }]
-    }
+  
     try {
       taskLogger.logStep('✅','Comando', 'END', `Usaram o comando ${data.command.name}`)
       return require(`../../commands/${data.command.path}.ts`).execute(ctx, data.args)
@@ -39,7 +39,7 @@ export class CommandRepository implements ICommandRepository {
 
     let adm = ctx.chat.type != "private"
       ? await (await ctx.getChatAdministrators())
-        .find((adm:any) => {return adm.user.id == ctx.from.id}) != undefined
+        .find(adm => {return adm.user.id == ctx.from.id}) != undefined
       : false
 
     return {
