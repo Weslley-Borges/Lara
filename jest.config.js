@@ -1,8 +1,8 @@
 module.exports = {
-  roots: ["<rootDir>/src"],
+  roots: [ "<rootDir>"],
   testEnvironment: "node",
   transform: {
-    '.*\\.ts$': 'ts-jest'
+    '.ts$': 'ts-jest'
   },
   moduleNameMapper: {
     "@config": "<rootDir>/src/config/index.ts",
@@ -11,6 +11,15 @@ module.exports = {
     "@temp/(.*)": "<rootDir>/temp/$1",
     "@services": "<rootDir>/src/services/index.ts",
     "@database": "<rootDir>/src/database/index.ts",
-    "@actions": "<rootDir>/src/actions/index.ts"
-  }
+    "@commands": "<rootDir>/src/commands",
+    "@src/(.*)": "<rootDir>/src/$1",
+
+  },
+  modulePaths: [
+    "<rootDir>"
+  ],
+  moduleDirectories: [
+    "node_modules",
+    "src"
+  ],
 }

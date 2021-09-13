@@ -1,0 +1,38 @@
+{
+  "env": {
+    "browser": true,
+    "es2021": true
+  },
+  "extends": [
+    "eslint:recommended",
+    "plugin:@typescript-eslint/recommended"
+  ],
+  "parser": "@typescript-eslint/parser",
+  "parserOptions": {
+    "ecmaVersion": 12,
+    "sourceType": "module"
+  },
+  "plugins": [
+    "@typescript-eslint"
+  ],
+  "rules": {
+    "indent": ["error", 2],
+    "linebreak-style": ["error", "windows"],
+    "quotes": ["error", "single"],
+    "semi": ["error", "never"],
+    "no-dupe-args": "warn",
+    "no-dupe-else-if": "warn",
+    "no-unused-vars": "error",
+    "@typescript-eslint/explicit-module-boundary-types": "off",
+    "@typescript-eslint/no-explicit-any": "off",
+    "@typescript-eslint/prefer-namespace-keyword": "off",
+    "@typescript-eslint/no-namespace": "off",
+    "@typescript-eslint/ban-types": "off",
+    "@typescript-eslint/naming-convention": ["error",
+      { "selector": ["variableLike", "classMethod"], "format": ["snake_case"] },
+      { "selector": ["variable"], "modifiers": ["const"], "format": ["camelCase"] },
+      { "selector": ["class", "interface"], "format": ["PascalCase"] }
+      // { "selector": "variable", "modifiers": "const", "format": ["camelCase", "PascalCase", "UPPER_CASE"] }
+    ]
+  }
+}

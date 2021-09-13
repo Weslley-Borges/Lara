@@ -1,5 +1,5 @@
-import { Response } from "@dtos";
-import { IVerificationRepository } from "./IVerificationRepository";
+import { Response } from '@dtos'
+import { IVerificationRepository } from './IVerificationRepository'
 
 
 export class VerificationUseCase {
@@ -7,16 +7,12 @@ export class VerificationUseCase {
 
   async execute(ctx:any): Promise<Response.Verification> {
     const verifications = [
-      await this.verificationRepository.find_invalid_links(ctx.message.text.split(" "))
+      await this.verificationRepository.find_malicious_links(ctx.message?.text.split(' '))
     ]
 
-    for (let index=0; verifications.length > index; index++) {
-      if (verifications[index].malicious) return verifications[index]
-    }
+    for (let i=0; verifications.length > i; i++)
+      if (verifications[i].malicious) return verifications[i]
 
-    return {
-      messages: [],
-      malicious: false
-    }
+    return {messages:[], malicious:false}
   }
 }

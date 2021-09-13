@@ -1,8 +1,8 @@
-import { compareTwoStrings } from "string-similarity"
-import { IChatRepository } from "./IChatRepository"
-import { greetings } from "@config"
-import { Response } from "@dtos"
-import axios from "axios"
+import { compareTwoStrings } from 'string-similarity'
+import { IChatRepository } from './IChatRepository'
+import { greetings } from '@config'
+import { Response } from '@dtos'
+import axios from 'axios'
 
 
 export class ChatRepository implements IChatRepository {
@@ -19,7 +19,7 @@ export class ChatRepository implements IChatRepository {
 
   get_greetings(message:string): string[] {
     const now = new Date
-    const hour = Number(now.toLocaleString().split(" ")[1].split(":")[0])
+    const hour = Number(now.toLocaleString().split(' ')[1].split(':')[0])
 
     for (let i=0; i < greetings.length; i++) {
       const { context, responses } = greetings[i]
@@ -32,6 +32,6 @@ export class ChatRepository implements IChatRepository {
             .messages[Math.floor(Math.random() * (responses[x].messages.length-0) + 0)]]
       }
     }
-    return [""]
+    return ['']
   }
 }

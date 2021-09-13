@@ -1,6 +1,6 @@
-import { Response } from "@dtos"
+import { Response } from '@dtos'
 
 export interface IVerificationRepository {
-  find_invalid_links: (weords:string[]) => Promise<Response.Verification>
-  get_message_links: (words:string[]) => string[]
+  find_malicious_links: (weords:string[]) => Promise<Response.Verification>
+  get_urls_from_message: (words:string[]) => string[]
 }

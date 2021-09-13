@@ -1,10 +1,10 @@
 {
   "compilerOptions": {
     "sourceMap": true,
-    "outDir": ".",
+    "outDir": "dist",
     "rootDir": ".",
     "removeComments": true,
-    "target": "ES2017",
+    "target": "ES5",
 
     // Strict Type-Checking Options 
     "strict": true,
@@ -22,14 +22,20 @@
     "experimentalDecorators": true,
     "paths": {
       "@config": ["./src/config"],
+      "@src/*": ["./src/*"],
       "@helpers": ["./src/helpers"],
+      "@commands": ["./src/commands"],
       "@dtos": ["./src/dtos"],
       "@temp/*": ["./temp/*"],
       "@services": ["./src/services"],
       "@database": ["./src/database"],
-      "@actions": ["./src/actions"]
     }
   },
   "include": ["./src", "./temp"],
-  "exclude": ["./node_modules"]
+  "exclude": ["./node_modules"],
+  "plugins": [
+    {
+      "transform": "@zerollup/ts-transform-paths",
+    }
+  ],
 }

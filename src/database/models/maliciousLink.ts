@@ -1,4 +1,4 @@
-import { Schema, model, Document } from "mongoose"
+import { Schema, model, Document } from 'mongoose'
 
 
 export interface IMaliciousLink extends Document {
@@ -9,4 +9,4 @@ export const maliciousLinkSchema = new Schema<IMaliciousLink>({
   link_url: {type:String, required:true}
 })
 
-export const MaliciousLink = model<IMaliciousLink>('malicious_links', maliciousLinkSchema)
+export const maliciousLink = model<IMaliciousLink>('malicious_links', maliciousLinkSchema)

@@ -1,5 +1,5 @@
-import { Response } from "@dtos"
-import { ChatUseCase } from "./ChatUseCase"
+import { Response } from '@dtos'
+import { ChatUseCase } from './ChatUseCase'
 
 
 export class ChatController {

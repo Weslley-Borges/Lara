@@ -1,21 +1,20 @@
-import { verificationController } from "@services"
-import { context } from "@temp/data/context"
+import { verificationController } from '@services'
+import { context } from '@temp/data/context'
+import { Context } from 'telegraf'
 
 
-describe("Verification System", () => {
-  let my_context = context
+describe('Verification System', () => {
+  const myContext = context
 
-  test("Should return false for 'malicious'", () => {
-    my_context.message.text = "Eae"
-    return verificationController.handle(my_context).then(data => {
-      expect(data.malicious).toBe(false)
-    })
+  test('Should return false for \'malicious\'', async () => {
+    myContext.message.text = 'Eae'
+    const data = await verificationController.handle(myContext as Context)
+    expect(data.malicious).toBe(false)
   })
 
-  test("Should return true for 'malicious'", () => {
-    my_context.message.text = "tiktok.app"
-    return verificationController.handle(my_context).then(data => {
-      expect(data.malicious).toBe(true)
-    })
+  test('Should return true for \'malicious\'', async () => {
+    myContext.message.text = 'tiktok.app'
+    const data = await verificationController.handle(myContext as Context)
+    expect(data.malicious).toBe(true)
   })
 })

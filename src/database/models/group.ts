@@ -1,4 +1,4 @@
-import { Schema, model, Document } from "mongoose"
+import { Schema, model, Document } from 'mongoose'
 
 
 export interface IOptions {
@@ -26,7 +26,7 @@ const optionsSchema = new Schema({
 })
 
 const memberSchema = new Schema({
-  id: {type:Number, required:true, ref:"User"},
+  id: {type:Number, required:true, ref:'User'},
   messages_count: {types:Number, default:0},
   last_update: {type:Date, default:new Date()},
   warns: {type:Number, deafult:0}
@@ -34,12 +34,12 @@ const memberSchema = new Schema({
 
 const groupSchema = new Schema<IGroup>({
   group_id: {type:Number, required:true},
-  group_welcome: {type:String, default:"Seja bem-vindo(a), PERSON!"},
-  group_links: {type:Array, default:[{text:"Suporte do Bot", url:"https://t.me/laraSuporte"}]},
-  group_tags: {type:Array, default:[], ref:"Tag"},
+  group_welcome: {type:String, default:'Seja bem-vindo(a), PERSON!'},
+  group_links: {type:Array, default:[{text:'Suporte do Bot', url:'https://t.me/laraSuporte'}]},
+  group_tags: {type:Array, default:[], ref:'Tag'},
   group_members: [memberSchema],
   group_options: [optionsSchema],
   group_last_update: {type:Date, default:new Date()}
 })
 
-export const Group = model<IGroup>('Group', groupSchema)
+export const group = model<IGroup>('Group', groupSchema)

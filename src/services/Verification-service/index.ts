@@ -1,6 +1,6 @@
-import { VerificationController } from "./VerificationController"
-import { VerificationUseCase } from "./VerificationUseCase"
-import { VerificationRepository } from "./VerificationRepository"
+import { VerificationController } from './VerificationController'
+import { VerificationUseCase } from './VerificationUseCase'
+import { VerificationRepository } from './VerificationRepository'
 
 const verificationRepository = new VerificationRepository
 const verificationUseCase = new VerificationUseCase(verificationRepository)
