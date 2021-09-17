@@ -14,28 +14,24 @@ export const bot = ((): Telegraf => {
     '[+] by Weslley Borges\n')
   connect_mongo()
   
-  return process.argv[2] === 'test' 
+  return process.argv.includes('test')
     ? new Telegraf(String(process.env.BOT_TOKEN_TEST))
     : new Telegraf(String(process.env.BOT_TOKEN))
 })()
 
 
-bot.telegram.getMe().then(() => {
-  taskLogger.log_step('⚙️','Init', 'END', `Lara Iniciada em ${process.argv[2]}`)
-})
-
+bot.telegram.getMe().then(() => taskLogger.log_step('⚙️','Init', 'END', 'Lara Iniciada com sucesso'))
 bot.start(ctx => send_response(ctx,[{text: messages.lara_start}]))
 
 
 bot.use(async (ctx, next) => {
-  if (ctx.updateType === 'message') {
-    const verification = await verificationController.handle(ctx)
-    if (verification.malicious) return send_response(ctx, verification.messages)
-  }
   next()
 })
 
 bot.on('text', async ctx => {
+  const verification = await verificationController.handle(ctx)
+  if (verification.malicious) return send_response(ctx, verification.messages)
+  
   send_response(ctx, ctx.message.text.startsWith(prefix)
     ? await commandController.handle(ctx)
     : await chatController.handle(ctx)

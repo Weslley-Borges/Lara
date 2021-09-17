@@ -1,5 +1,6 @@
 import { commands } from '@commands'
-import { Command } from '@dtos'
+import { Command, Response } from '@dtos'
+import { Context } from 'telegraf'
 
 
 class Menu implements Command {
@@ -10,12 +11,14 @@ class Menu implements Command {
   public arguments = []
 
   
-  public execute(): any {
+  public execute(ctx:Context): Response.Message {
     let message = 'MENU DE COMANDOS\n\n'
-    for (const cmd of commands) 
+    for (const cmd of commands) {
+      if (!ctx.message?.chat.type.includes('group') && cmd.role === 'ADM') continue
       message += `${cmd.emoji} <b>${cmd.name}</b> - <code>${cmd.description.split('.')[0]}</code>\n`
+    }
 
-    return [{text: message}]
+    return {text: message}
   }
 }
 

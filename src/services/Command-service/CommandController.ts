@@ -19,7 +19,8 @@ export class CommandController {
       return [{text:messages.argsError.replace('ARGS',commandName).replace('ERRORS',argumentsError)}]
 
     taskLogger.log_step('✅','Comando', 'END', `Usaram o comando ${commandName}`)
-    return calledCommand.execute(ctx, args)
+    const result = await calledCommand.execute(ctx, args)
+    return Array.isArray(result) ? result : [result]
   }
 
   async validate_status(ctx:Context, command:Command|null): Promise<Response.Message[]|undefined> {
@@ -39,7 +40,7 @@ export class CommandController {
     let error_message = ''
 
     for (const field of cmd_args)
-      error_message = args[field.index] != undefined
+      error_message = args[field.index]
         ? error_message
         : `${error_message}❗️${field.error}\n`
         

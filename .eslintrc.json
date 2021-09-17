@@ -23,6 +23,7 @@
     "no-dupe-args": "warn",
     "no-dupe-else-if": "warn",
     "no-unused-vars": "error",
+    "@typescript-eslint/no-var-requires": "off",
     "@typescript-eslint/explicit-module-boundary-types": "off",
     "@typescript-eslint/no-explicit-any": "off",
     "@typescript-eslint/prefer-namespace-keyword": "off",

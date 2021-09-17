@@ -22,7 +22,7 @@ function replace_holders(ctx:any, message:string) {
 function send_many_texts_in_one_message(ctx:any, contents:string[]): void {
   let to_send:string[] = []
 
-  for (const content in contents) {
+  for (const content of contents) {
     if (to_send.length === 10) {
       send_one_message(ctx, {text:to_send.join('\n\n'), chat:'PRIVATE'})
       to_send = []

@@ -1,8 +1,12 @@
-import { banCommand } from './ban'
-import { menuCommand } from './menu'
+import { aboutCommand } from './commons/about'
+import { banCommand } from './administration/ban'
+import { googleCommand } from './search/google'
+import { menuCommand } from './commons/menu'
 
 
 export const commands = [
   menuCommand,
-  banCommand
+  aboutCommand,
+  banCommand,
+  googleCommand
 ]
