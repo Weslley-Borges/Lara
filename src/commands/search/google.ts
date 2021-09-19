@@ -7,7 +7,7 @@ class Google implements Command {
   public emoji = '🔎'
   public description = 
     'Pesquisa no Google.\n\n'+
-    '<b>Exemplo:</b> !google como comprar os produtos Ivone\n\n'+
+    '<b>Exemplo:</b> PREFIXgoogle como comprar os produtos Ivone\n\n'+
     '<u>|Dicas para melhorar a eficiência da pesquisa|</u>\n'+
     '▫️ Coloque as frases entre aspas (" ") para obter a correspondência exata\n'+
     '▫️ Anexe palavras ou frases que devem aparecer com um símbolo +.\n'+

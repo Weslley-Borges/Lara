@@ -6,7 +6,7 @@ class About implements Command {
   public name = 'about'
   public role = 'COMMON'
   public emoji = '❔'
-  public description = 'Fala sobre um comando.'
+  public description = 'Fala sobre um comando.\n\nEx: PREFIXabout google'
   public arguments = []
 
   
