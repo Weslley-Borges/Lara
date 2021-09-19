@@ -2,15 +2,12 @@ import { prefix } from '@config'
 import { Response } from '@dtos'
 
 
-// Main function
 export function send_response(ctx:any, responses:Response.Message[]|string[]): void {
   typeof responses[0] == 'string'
     ? send_many_texts_in_one_message(ctx, responses as string[])
     : (responses as Response.Message[]).forEach(msg => send_one_message(ctx, msg))
 }
 
-
-// Holder functions
 function replace_holders(ctx:any, message:string) {
   return message
     .replace('PERSON', ctx.from.first_name)
@@ -18,7 +15,6 @@ function replace_holders(ctx:any, message:string) {
 }
 
 
-// Sending methods
 function send_many_texts_in_one_message(ctx:any, contents:string[]): void {
   let to_send:string[] = []
 

@@ -17,7 +17,8 @@ export async function connect_mongo() {
   mongoose.set('useUnifiedTopology', true)
   mongoose.set('useCreateIndex', true)
 
-  const url = process.argv.includes('--db-test') ? possibleConnections.localDB : possibleConnections.localDB
+  const url = process.argv.includes('--db-test') || process.argv.includes('test')
+    ? possibleConnections.localDB : possibleConnections.localDB
 
   await mongoose.connect(url)
     .then(() => new TaskLogger().log_step('✅','DATABASE', 'END', 'Banco de dados iniciado com sucesso'))

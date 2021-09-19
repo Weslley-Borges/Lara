@@ -7,25 +7,30 @@ class Ban implements Command {
   public name = 'ban'
   public role = 'ADM'
   public emoji = '❌'
-  public description = 'Bane um usuário. Você pode usar o ID ou marcar uma mensagem desse usuário.'
+  public description = 
+    'Bane um usuário. <b>OBS: Você precisa marcar uma mensagem desse usuário</b>.\n\n'+
+    'Ex: PREFIXban <motivo do banimento>'
   public arguments = []
 
   
   public async execute(ctx:any, args:string[]): Promise<Response.Message> {
     const marked = ctx.update.message.reply_to_message
     
-    if (!args[0] && !marked) 
-      return {text:'Você deve marcar uma mensagem, ou colocar o ID dessa pessoa.'}
+    if (!marked) return {text:'Você deve marcar uma mensagem do usuário que quer banir.'}
+    if (!(await ctx.getChatMember(marked.from.id))) return {text:'Esse usuário não está no grupo'}
 
-    const toBan = !isNaN(Number(args[0])) ? Number(args[0]) : marked.from.id
-    const member = await ctx.getChatMember(toBan)
+    const reason = args.length === 0 ? 'Não especificado\\.' : args.join(' ')
+    const member = await ctx.getChatMember(marked.from.id)
     const isAdm = is_adm(ctx, member.user.id)
 
     if (member.user.id == bot.botInfo?.id || !isAdm) 
       return {text:'Eu não posso expulsar esse membro...'}
-
-    ctx.kickChatMember(toBan)
-    return {text:`O membro ${member.user.id} (${member.user.first_name}) foi expulso.`}
+  
+    ctx.kickChatMember(member.user.id)
+    return {
+      text: `🚫 <a href="tg://user?id=${member.user.id}">${member.user.first_name}</a> foi banido!\n<b>Motivo:</b> ${reason}`,
+      markup: {inline_keyboard:[[{text:'Desbane', callback_data: 'unban'}]]}
+    }
   }
 }
 

@@ -1,3 +1,7 @@
 import { CommandController } from './CommandController'
+import { CommandUseCase } from './CommandUseCase'
+import { CommandRepository } from './CommandRepository'
 
-export const commandController = new CommandController()
+const commandRepository = new CommandRepository
+const commandUseCase = new CommandUseCase(commandRepository)
+export const commandController = new CommandController(commandUseCase)

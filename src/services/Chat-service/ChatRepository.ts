@@ -27,7 +27,7 @@ export class ChatRepository implements IChatRepository {
       if (compareTwoStrings(context, message.toLowerCase()) < .65) continue
       
       for (let x=0; x < responses.length; x++) {
-        if (responses[x].min <= hour || hour <= responses[x].max)
+        if (responses[x].min <= hour && hour <= responses[x].max)
           return [responses[x]
             .messages[Math.floor(Math.random() * (responses[x].messages.length-0) + 0)]]
       }
