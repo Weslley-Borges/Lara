@@ -11,6 +11,7 @@ class Ban implements Command {
     'Bane um usuário. <b>OBS: Você precisa marcar uma mensagem desse usuário</b>.\n\n'+
     'Ex: PREFIXban <motivo do banimento>'
   public arguments = []
+  public example_image = 'assets/img/Ban.png'
 
   
   public async execute(ctx:any, args:string[]): Promise<Response.Message> {
@@ -24,7 +25,7 @@ class Ban implements Command {
     const isAdm = is_adm(ctx, member.user.id)
 
     if (member.user.id == bot.botInfo?.id || !isAdm) 
-      return {text:'Eu não posso expulsar esse membro...'}
+      return {text:'Eu não posso banir esse membro...'}
   
     ctx.kickChatMember(member.user.id)
     return {

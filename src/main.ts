@@ -17,11 +17,13 @@ export const bot = ((): Telegraf => {
     : new Telegraf(String(process.env.BOT_TOKEN))
 })()
 
-bot.telegram.getMe().then(() => taskLogger.log_step('⚙️','Init', 'END', 'Lara Iniciada com sucesso'))
-bot.start(ctx => send_response(ctx,[{text: messages.lara_start}]))
-bot.launch({dropPendingUpdates: true})
-
-actions(bot)
-
-process.once('SIGINT', () => bot.stop('SIGINT'))
-process.once('SIGTERM', () => bot.stop('SIGTERM'))
+if (process.argv.includes('start')) {
+  bot.telegram.getMe().then(() => taskLogger.log_step('⚙️','Init', 'END', 'Lara Iniciada com sucesso'))
+  bot.start(ctx => send_response(ctx,[{text: messages.lara_start}]))
+  bot.launch({dropPendingUpdates: true})
+  
+  actions(bot)
+  
+  process.once('SIGINT', () => bot.stop('SIGINT'))
+  process.once('SIGTERM', () => bot.stop('SIGTERM'))
+}

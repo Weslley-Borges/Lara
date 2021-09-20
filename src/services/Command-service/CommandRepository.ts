@@ -3,6 +3,7 @@ import { Command, Response } from '@dtos'
 import { Context } from 'telegraf'
 import { messages } from '@config'
 import { is_adm } from '@src/helpers'
+import { bot } from '@src/main'
 
 
 export class CommandRepository implements ICommandRepository {
@@ -11,7 +12,7 @@ export class CommandRepository implements ICommandRepository {
     if (command.role === 'ADM') {
       if (!ctx.chat?.type.includes('group')) return [{text:messages.isNot_group}]
 
-      const laraIsAdm = await is_adm(ctx, Number(process.env.BOT_ID))
+      const laraIsAdm = await is_adm(ctx, Number(bot.botInfo?.id))
       const userIsAdm = await is_adm(ctx, Number(ctx.message?.from.id))
       
       if (!userIsAdm) return [{text:messages.isNot_adm}]

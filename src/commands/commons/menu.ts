@@ -9,6 +9,7 @@ class Menu implements Command {
   public emoji = '📊'
   public description = 'Mostra os comandos.'
   public arguments = []
+  public example_image = 'assets/img/Menu.png'
 
   
   public execute(ctx:Context): Response.Message {

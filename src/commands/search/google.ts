@@ -18,6 +18,7 @@ class Google implements Command {
     'Ex: crypto AND (ethereum OR litecoin) NOT bitcoin.'
 
   public arguments = [{index: 0, error: 'Você precisa colocar o que quer pesquisar'}]
+  public example_image = 'assets/img/Google.png'
 
   
   public async execute(ctx:any, args:string[]): Promise<string[]> {
