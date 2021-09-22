@@ -1,4 +1,4 @@
-import { Context } from 'telegraf'
+import { Context } from 'grammy'
 
 
 export async function is_adm(ctx:Context, adm_id:number): Promise<boolean> {

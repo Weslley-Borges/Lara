@@ -7,7 +7,6 @@ export interface IOptions {
 }
 export interface IMember {
   id:Number
-  messages_count:Number
   last_update:Date
 }
 export interface IGroup extends Document {
@@ -21,8 +20,15 @@ export interface IGroup extends Document {
 }
 
 const optionsSchema = new Schema({
-  option_name: {type:String, required:true},
-  option_status: {type:Boolean, default:true}
+  option_name: {
+    type:String,
+    required:true
+  },
+
+  option_status: {
+    type:Boolean,
+    default:true
+  }
 })
 
 const memberSchema = new Schema({
@@ -42,4 +48,4 @@ const groupSchema = new Schema<IGroup>({
   group_last_update: {type:Date, default:new Date()}
 })
 
-export const group = model<IGroup>('Group', groupSchema)
+export const group = model('Group', groupSchema)

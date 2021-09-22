@@ -1,60 +1,38 @@
-import { chatController, commandController, verificationController } from '@services'
+import { chatController, commandController } from '@services'
 import { messages, prefix, taskLogger } from '@config'
-import { groupController } from '@database'
-import { is_adm, send_response } from '@helpers'
-import { Telegraf } from 'telegraf'
+import { groupService } from '@database'
+import { send_response } from '@helpers'
+import { Bot } from 'grammy'
 
 
-export const actions = (bot: Telegraf) => {
+export const actions = (bot: Bot) => {
   bot.use(async (ctx, next) => {
     console.time('Processing time')
     await next()
     console.timeEnd('Processing time')
   })
 
-  bot.on('text', async ctx => {
-    const verification = await verificationController.handle(ctx, 'text')
-    if (verification.malicious) return send_response(ctx, verification.messages)
-    
-    send_response(ctx, ctx.message.text.startsWith(prefix)
+  bot.on('message:text', async ctx => {
+    send_response(ctx, ctx.message?.text.startsWith(prefix)
       ? await commandController.handle(ctx)
       : await chatController.handle(ctx)
     )
   })
 
-  bot.action('unban', async (ctx:any) => {
-    if (!is_adm(ctx, ctx.callbackQuery.from.id)) return {text: messages.isNot_adm}
-
-    const entities = ctx.callbackQuery.message?.entities
-    
-    if (entities[0].type === 'text_mention') {
-      try {
-        await ctx.unbanChatMember(entities[0].user.id)
-        await ctx.reply('📕 Usuário desbanido.')
-    
-      } catch (e) { await ctx.reply('⚠️ Não posso desbanir esse usuário!' ) }
-    }
+  bot.on('message:left_chat_member:me', async ctx => {
+    if (ctx.chat.type === 'channel' || ctx.chat.type === 'private') return
+    console.log(await groupService.find_one(ctx.chat.id))
+    await groupService.delete_one(ctx.chat.id)
+    taskLogger.log_step('😢','REMOVED', 'ACTION', `Fui removida de ${ctx.chat.title} (${ctx.chat.id})`)
   })
 
-  bot.on('left_chat_member', async ctx => {
-    if (ctx.chat.type === 'private') return
-    const member = ctx.update.message.left_chat_member
-  
-    if (member.id === bot.botInfo?.id) {
-      await groupController.delete_one(ctx.chat.id)
-      taskLogger.log_step('😢','REMOVED', 'ACTION', `Fui removida de ${ctx.chat.title} (${ctx.chat.id})`)
-  
-    } else if (member.is_bot)
-      return send_response(ctx, [{text: 'Pronto, menos concorrência.'}])
+  bot.on('message:new_chat_members:me', async ctx => { 
+    if (ctx.chat.type.includes('group'))
+      await groupService.register_group(ctx.chat.id).then(() => send_response(ctx, [{text:messages.lara_join}]))
   })
+  bot.on('message:new_chat_members', async ctx => {
+    if (ctx.update.chat_member?.new_chat_member.user.is_bot) return
 
-  bot.on('new_chat_members', ctx => {
-    ctx.update.message.new_chat_members.forEach(async new_member => {
-      if (!ctx.chat.type.includes('group')) return
-      if (new_member.id !== bot.botInfo?.id) return
-      
-      groupController.register_group(ctx.chat.id)
-      send_response(ctx, [{text:messages.lara_join}])
-    })
+    
   })
 }

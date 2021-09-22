@@ -1,3 +1,5 @@
+import { Context } from 'grammy'
+
 export interface Command {
   name: string
   role: string
@@ -5,5 +7,5 @@ export interface Command {
   description: string
   arguments: {index:number, error:string}[]
 
-  execute: (ctx:any, args:string[]) => any
+  execute: (ctx:Context, args:string[]) => any
 }

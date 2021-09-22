@@ -8,14 +8,13 @@ dotenv.config()
 const env = process.env
 
 const possibleConnections = {
-  localDB: `mongodb://localhost:${env.MONGO_PORT_LOCAL}`,
+  localDB: 'mongodb://localhost:27017/?readPreference=primary&appname=MongoDB%20Compass&directConnection=true&ssl=false',
   prodDB: `mongodb://${env.MONGO_USERNAME_PROD}:${env.MONGO_PASSWORD_PROD}@${env.MONGO_HOST_PROD}`
 }
 
 export async function connect_mongo() {
   mongoose.set('useNewUrlParser', true)
   mongoose.set('useUnifiedTopology', true)
-  mongoose.set('useCreateIndex', true)
 
   const url = process.argv.includes('--db-test') || process.argv.includes('test')
     ? possibleConnections.localDB : possibleConnections.localDB

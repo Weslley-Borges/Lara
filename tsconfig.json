@@ -26,12 +26,11 @@
       "@helpers": ["./src/helpers"],
       "@commands": ["./src/commands"],
       "@dtos": ["./src/dtos"],
-      "@temp/*": ["./temp/*"],
       "@services": ["./src/services"],
       "@database": ["./src/database"],
     }
   },
-  "include": ["./src", "./temp", "./tests"],
+  "include": ["./src"],
   "exclude": ["./node_modules"],
   "plugins": [
     {

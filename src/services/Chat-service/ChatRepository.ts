@@ -3,11 +3,12 @@ import { IChatRepository } from './IChatRepository'
 import { greetings } from '@config'
 import { Response } from '@dtos'
 import axios from 'axios'
+import { Context } from 'grammy'
 
 
 export class ChatRepository implements IChatRepository {
-  async get_response(ctx:any): Promise<Response.Message[]> {
-    let responses:string[] = this.get_greetings(ctx.message?.text)
+  async get_response(ctx:Context): Promise<Response.Message[]> {
+    let responses:string[] = this.get_greetings(String(ctx.message?.text))
 
     if (responses[0].length == 0)
       responses = (await axios.get(`${process.env.LARA_API}chat`, {

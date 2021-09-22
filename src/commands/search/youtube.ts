@@ -1,18 +1,19 @@
 import { Command } from '@dtos'
+import { Context } from 'grammy'
 
 
 class YouTube implements Command {
-  public name = 'youtube'
-  public role = 'COMMON'
-  public emoji = '🎥'
-  public description = 
+  name = 'youtube'
+  role = 'COMMON'
+  emoji = '🎥'
+  description = 
     'Pesquisa no Youtube.\n\n'+
     '<b>Exemplo:</b> PREFIXyoutube como comprar os produtos Ivone'
-  public arguments = [{index: 0, error: 'Você precisa colocar o que quer pesquisar'}]
-  public example_image = 'assets/img/YouTube.png'
+  arguments = [{index: 0, error: 'Você precisa colocar o que quer pesquisar'}]
+  example_image = 'assets/img/YouTube.png'
 
   
-  public async execute(ctx:any, args:string[]): Promise<string[]> {
+  async execute(ctx:Context, args:string[]): Promise<string[]> {
     return await this.get_many_videos(args.toString())
   }
   

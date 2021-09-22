@@ -16,8 +16,8 @@
 ---
 
 ## Useful Files
-- [Setup](DOCs/setup.md)
-- [Contributing](DOCs/CONTRIBUTING.md)
+- [Setup](SETUP.md)
+- [Contributing](CONTRIBUTING.md)
 - [License](LICENSE)
 
 ---

@@ -1,2 +1,1 @@
-export * from "./maliciousLink"
-export * from "./group"
+export * from './group.model'

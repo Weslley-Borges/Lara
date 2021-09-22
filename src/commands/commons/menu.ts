@@ -1,18 +1,18 @@
 import { commands } from '@commands'
 import { Command, Response } from '@dtos'
-import { Context } from 'telegraf'
+import { Context } from 'grammy'
 
 
 class Menu implements Command {
-  public name = 'menu'
-  public role = 'COMMON'
-  public emoji = '📊'
-  public description = 'Mostra os comandos.'
-  public arguments = []
-  public example_image = 'assets/img/Menu.png'
+  name = 'menu'
+  role = 'COMMON'
+  emoji = '📊'
+  description = 'Mostra os comandos.'
+  arguments = []
+  example_image = 'assets/img/Menu.png'
 
   
-  public execute(ctx:Context): Response.Message {
+  execute(ctx:Context): Response.Message {
     let message = 'MENU DE COMANDOS\n\n'
     for (const cmd of commands) {
       if (!ctx.message?.chat.type.includes('group') && cmd.role === 'ADM') continue

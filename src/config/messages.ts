@@ -23,9 +23,6 @@ export const messages = {
     '- Me torne administradora do grupo\n'+
     '- Inicie uma converna no meu privado\n\n'+
     'Dito isso, espero que goste dos meus serviços, use o comando <code>!menu</code> para ver o meu menu de comandos',
-  member_join:
-    'Oie PERSON, tudo bem? Fale um pouco sobre você, para fazer a sua verificação no grupo.\n'+
-    'Você tem 2 minutos antes de ser expulso!',
   lara_start:
     '<b>Oi! Eu me chamo Lara</b>\n'+
     'Eu sou um bot criado para fornecer serviços\n\n'+

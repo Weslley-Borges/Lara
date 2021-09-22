@@ -1,6 +1,6 @@
 import { ICommandRepository } from './ICommandRepository'
 import { Command, Response } from '@dtos'
-import { Context } from 'telegraf'
+import { Context } from 'grammy'
 import { messages } from '@config'
 import { is_adm } from '@src/helpers'
 import { bot } from '@src/main'
@@ -13,7 +13,7 @@ export class CommandRepository implements ICommandRepository {
       if (!ctx.chat?.type.includes('group')) return [{text:messages.isNot_group}]
 
       const laraIsAdm = await is_adm(ctx, Number(bot.botInfo?.id))
-      const userIsAdm = await is_adm(ctx, Number(ctx.message?.from.id))
+      const userIsAdm = await is_adm(ctx, Number(ctx.message?.from?.id))
       
       if (!userIsAdm) return [{text:messages.isNot_adm}]
       if (!laraIsAdm) return [{text:messages.lara_isNot_adm}]
