@@ -8,7 +8,7 @@ class About implements Command {
   role = 'COMMON'
   emoji = '❔'
   description = 'Fala sobre um comando.\n\nEx: PREFIXabout google'
-  arguments = []
+  arguments = [{type:'text', index:0, error: 'Escreva o comando do qual quer saber mais.'}]
   example_image = 'assets/img/About.png'
 
 

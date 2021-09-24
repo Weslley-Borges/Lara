@@ -26,5 +26,6 @@ export const messages = {
   lara_start:
     '<b>Oi! Eu me chamo Lara</b>\n'+
     'Eu sou um bot criado para fornecer serviços\n\n'+
-    'Digite <b><i>!menu</i></b> para ver os meus comandos!'
+    'Digite <b><i>!menu</i></b> para ver os meus comandos!',
+  needs_to_mark: 'Você deve marcar uma mensagem'
 }

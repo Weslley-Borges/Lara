@@ -20,13 +20,17 @@ export class CommandRepository implements ICommandRepository {
     }
   }
 
-  validate_arguments(cmd_args:{index:number, error:string}[], args:string[]): string|null {
+  validate_arguments(ctx:Context, cmd_args:any[], args:string[]): string|null {
     let error_message = ''
 
-    for (const field of cmd_args)
-      error_message = args[field.index]
-        ? error_message
-        : `${error_message}❗️${field.error}\n`
+    for (const field of cmd_args) {
+      const isEmpyt = !args[field.index] && field.type == 'text'
+      const isMarkEmpyt = field.type == 'mark' && !ctx.update.message?.reply_to_message
+
+      error_message = isEmpyt || isMarkEmpyt
+        ? `${error_message}❗️${field.error}\n`
+        : error_message
+    }
         
     return error_message !== '' ? error_message : null
   }

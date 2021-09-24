@@ -10,9 +10,3 @@ export module Response {
     malicious: boolean
   }
 }
-
-export interface IOptionsDTO {
-  field: 'group_tags'|'group_links'|'group_welcome'
-  method: string|null
-  value:any
-}

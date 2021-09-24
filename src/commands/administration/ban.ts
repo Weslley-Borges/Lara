@@ -1,3 +1,4 @@
+import { messages } from '@config'
 import { Command, Response } from '@dtos'
 import { is_adm } from '@src/helpers'
 import { bot } from '@src/main'
@@ -11,16 +12,14 @@ class Ban implements Command {
   description = 
   'Bane um usuário. <b>OBS: Você precisa marcar uma mensagem desse usuário</b>.\n\n'+
   'Ex: PREFIXban <motivo do banimento>'
-  arguments = []
+  arguments = [{type:'mark', error: messages.needs_to_mark+' do usuário que quer banir.'}]
   example_image = 'assets/img/Ban.png'
 
 
   async execute(ctx:Context, args:string[]): Promise<Response.Message> {
     const marked = ctx.update.message?.reply_to_message
 
-    if (!marked) return {text:'Você deve marcar uma mensagem do usuário que quer banir.'}
-
-    const toBan = Number(marked.from?.id)
+    const toBan = Number(marked?.from?.id)
     if (!(await ctx.getChatMember(toBan))) return {text:'Esse usuário não está no grupo'}
 
     const reason = args.length === 0 ? 'Não especificado\\.' : args.join(' ')

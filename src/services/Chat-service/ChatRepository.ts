@@ -1,9 +1,9 @@
 import { compareTwoStrings } from 'string-similarity'
 import { IChatRepository } from './IChatRepository'
-import { greetings } from '@config'
+import { greetings, messageContexts } from '@config'
 import { Response } from '@dtos'
-import axios from 'axios'
 import { Context } from 'grammy'
+import axios from 'axios'
 
 
 export class ChatRepository implements IChatRepository {
@@ -12,9 +12,9 @@ export class ChatRepository implements IChatRepository {
 
     if (responses[0].length == 0)
       responses = (await axios.get(`${process.env.LARA_API}chat`, {
-        data:{message:ctx.message?.text}
+        data:{message:ctx.message?.text, contexts:messageContexts}
       })).data.results
-    
+
     return responses.map(msg => {return {text:msg}})
   }
 
@@ -22,15 +22,12 @@ export class ChatRepository implements IChatRepository {
     const now = new Date
     const hour = Number(now.toLocaleString().split(' ')[1].split(':')[0])
 
-    for (let i=0; i < greetings.length; i++) {
-      const { context, responses } = greetings[i]
+    for (const greeting of greetings) {
+      if (compareTwoStrings(greeting.context, message.toLowerCase()) < .65) continue
 
-      if (compareTwoStrings(context, message.toLowerCase()) < .65) continue
-      
-      for (let x=0; x < responses.length; x++) {
-        if (responses[x].min <= hour && hour <= responses[x].max)
-          return [responses[x]
-            .messages[Math.floor(Math.random() * (responses[x].messages.length-0) + 0)]]
+      for (const response of greeting.responses) {
+        if (response.min <= hour && hour <= response.max)
+          return [response.messages[Math.floor(Math.random() * (response.messages.length-0) + 0)]]
       }
     }
     return ['']

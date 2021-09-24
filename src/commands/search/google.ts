@@ -18,7 +18,7 @@ class Google implements Command {
   '▫️ Alternativamente, você pode usar as palavras-chave AND / OR / NOT e, também, agrupá-las com parênteses.\n'+
   'Ex: crypto AND (ethereum OR litecoin) NOT bitcoin.'
 
-  arguments = [{index: 0, error: 'Você precisa colocar o que quer pesquisar'}]
+  arguments = [{type:'text', index: 0, error: 'Você precisa colocar o que quer pesquisar'}]
   example_image = 'assets/img/Google.png'
 
 

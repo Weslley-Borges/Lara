@@ -18,7 +18,7 @@ export class CommandUseCase {
     const statusError = await this.commandRepository.validate_status(ctx, calledCommand)
     if (statusError) return statusError
     
-    const argumentsError = this.commandRepository.validate_arguments(calledCommand.arguments, args)
+    const argumentsError = this.commandRepository.validate_arguments(ctx, calledCommand.arguments, args)
     if (argumentsError) 
       return [{text:messages.argsError.replace('ARGS',commandName).replace('ERRORS',argumentsError)}]
 

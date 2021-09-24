@@ -9,7 +9,7 @@ class YouTube implements Command {
   description = 
     'Pesquisa no Youtube.\n\n'+
     '<b>Exemplo:</b> PREFIXyoutube como comprar os produtos Ivone'
-  arguments = [{index: 0, error: 'Você precisa colocar o que quer pesquisar'}]
+  arguments = [{type:'text', index: 0, error: 'Você precisa colocar o que quer pesquisar'}]
   example_image = 'assets/img/YouTube.png'
 
   
