@@ -1,5 +1,5 @@
 import { commands } from '@commands'
-import { Command, Response } from '@dtos'
+import { Command, MessageDTO } from '@types'
 import { Context } from 'grammy'
 
 
@@ -12,7 +12,7 @@ class Menu implements Command {
   example_image = 'assets/img/Menu.png'
 
   
-  execute(ctx:Context): Response.Message {
+  execute(ctx:Context): MessageDTO {
     let message = 'MENU DE COMANDOS\n\n'
     for (const cmd of commands) {
       if (!ctx.message?.chat.type.includes('group') && cmd.role === 'ADM') continue

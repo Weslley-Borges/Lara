@@ -1,4 +1,4 @@
-import { Schema, model, Document } from 'mongoose'
+import { Schema, model, Document, Model } from 'mongoose'
 
 
 export interface IOptions {
@@ -48,4 +48,4 @@ const groupSchema = new Schema<IGroup>({
   group_last_update: {type:Date, default:new Date()}
 })
 
-export const group = model('Group', groupSchema)
+export const group: Model<IGroup>  = model('groups', groupSchema)

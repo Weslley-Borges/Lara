@@ -1,6 +1,6 @@
-import { Command, Response } from '@dtos'
+import { Command, MessageDTO } from '@types'
 import { commands } from '@commands'
-import { Context } from 'grammy'
+import { Context, InputFile } from 'grammy'
 
 
 class About implements Command {
@@ -12,11 +12,11 @@ class About implements Command {
   example_image = 'assets/img/About.png'
 
 
-  async execute(ctx:Context, args:string[]): Promise<Response.Message> {
+  async execute(ctx:Context, args:string[]): Promise<MessageDTO> {
     const searchedCommand = commands.filter(c => c.name == args.toString())[0]
     return searchedCommand 
-      ? {text:searchedCommand.description, image: {source: searchedCommand.example_image}} 
-      : {text: 'Esse comando não existe...'}
+      ? {text:searchedCommand.description, image: new InputFile(searchedCommand.example_image)} 
+      : {text:'Esse comando não existe...'}
   }
 }
 

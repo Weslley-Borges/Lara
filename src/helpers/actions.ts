@@ -23,10 +23,9 @@ export const actions = (bot: Bot) => {
   })
 
   bot.on('message:text', async ctx => {
-    send_response(ctx, ctx.message?.text.startsWith(prefix)
+    ctx.message?.text.startsWith(prefix)
       ? await commandController.handle(ctx)
       : await chatController.handle(ctx)
-    )
   })
 
   bot.on('message:left_chat_member:me', async ctx => {

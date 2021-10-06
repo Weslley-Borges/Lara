@@ -1,8 +1,8 @@
-import { messages } from '@config'
-import { Command, Response } from '@dtos'
+import { Command, MessageDTO } from '@types'
 import { is_adm } from '@src/helpers'
-import { bot } from '@src/main'
+import { messages } from '@config'
 import { Context } from 'grammy'
+import { bot } from '@src/main'
 
 
 class Ban implements Command {
@@ -10,13 +10,13 @@ class Ban implements Command {
   role = 'ADM'
   emoji = '❌'
   description = 
-  'Bane um usuário. <b>OBS: Você precisa marcar uma mensagem desse usuário</b>.\n\n'+
-  'Ex: PREFIXban <motivo do banimento>'
+    'Bane um usuário. <b>OBS: Você precisa marcar uma mensagem desse usuário</b>.\n\n'+
+    'Ex: PREFIXban <motivo do banimento>'
   arguments = [{type:'mark', error: messages.needs_to_mark+' do usuário que quer banir.'}]
   example_image = 'assets/img/Ban.png'
 
 
-  async execute(ctx:Context, args:string[]): Promise<Response.Message> {
+  async execute(ctx:Context, args:string[]): Promise<MessageDTO> {
     const marked = ctx.update.message?.reply_to_message
 
     const toBan = Number(marked?.from?.id)

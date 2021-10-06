@@ -25,7 +25,7 @@
       "@src/*": ["./src/*"],
       "@helpers": ["./src/helpers"],
       "@commands": ["./src/commands"],
-      "@dtos": ["./src/dtos"],
+      "@types": ["./src/types"],
       "@services": ["./src/services"],
       "@database": ["./src/database"],
     }

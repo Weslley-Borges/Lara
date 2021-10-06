@@ -22,13 +22,28 @@ class GroupService {
 
   async add_new_member(group_id:number, member_id:number) {
     const myGroup = await group.findOne({group_id: group_id})
-    if (!myGroup) await this.register_group(group_id)
+    if (!myGroup) return await this.register_group(group_id)
 
     const isRegistred = myGroup.group_members.filter(member => member.id === member_id)[0] != null 
     if (!isRegistred) {
-      myGroup.group_members.push({id:member_id, last_update: Date.now()})
+      myGroup.group_members.push({id:member_id, last_update: new Date()})
       group.updateOne({group_id:group_id}, {group_members:myGroup.group_members})
     }
+  }
+
+  async evaluate_message(group_id:number, member_id:number) {
+    await this.add_new_member(group_id, member_id)
+    const myGroup = await group.findOne({group_id:group_id})
+    if (!myGroup) return
+
+    const members = myGroup.group_members
+    for (const member of members)
+      if (member_id === member.id) {
+        member.last_update = new Date()
+        break
+      }
+      
+    await group.updateOne({group_id: group_id}, {'$set': {group_members:members, group_last_update:new Date()}}).exec()
   }
 }
 export const groupService = new GroupService

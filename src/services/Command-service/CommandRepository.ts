@@ -1,5 +1,5 @@
 import { ICommandRepository } from './ICommandRepository'
-import { Command, Response } from '@dtos'
+import { Command, MessageDTO } from '@types'
 import { Context } from 'grammy'
 import { messages } from '@config'
 import { is_adm } from '@src/helpers'
@@ -7,7 +7,7 @@ import { bot } from '@src/main'
 
 
 export class CommandRepository implements ICommandRepository {
-  async validate_status(ctx:Context, command:Command|null): Promise<Response.Message[]|undefined> {
+  async validate_status(ctx:Context, command:Command|null): Promise<MessageDTO[]|undefined> {
     if (!command) return [{text: messages.commandNotFound}]
     if (command.role === 'ADM') {
       if (!ctx.chat?.type.includes('group')) return [{text:messages.isNot_group}]

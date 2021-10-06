@@ -7,7 +7,7 @@ module.exports = {
   moduleNameMapper: {
     '@config': '<rootDir>/src/config/index.ts',
     '@helpers': '<rootDir>/src/helpers/index.ts',
-    '@dtos': '<rootDir>/src/dtos',
+    '@types': '<rootDir>/src/types',
     '@services': '<rootDir>/src/services/index.ts',
     '@database': '<rootDir>/src/database/index.ts',
     '@commands': '<rootDir>/src/commands',

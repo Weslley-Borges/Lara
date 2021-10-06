@@ -1,4 +1,4 @@
-import { Command } from '@dtos'
+import { Command } from '@types'
 import { Context } from 'grammy'
 
 

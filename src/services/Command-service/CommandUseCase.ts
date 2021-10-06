@@ -1,5 +1,5 @@
 import { messages, prefix, taskLogger } from '@config'
-import { Response } from '@dtos'
+import { MessageDTO } from '@types'
 import { commands } from '@src/commands'
 import { Context } from 'grammy'
 import { ICommandRepository } from './ICommandRepository'
@@ -8,7 +8,7 @@ import { ICommandRepository } from './ICommandRepository'
 export class CommandUseCase {
   constructor(private commandRepository: ICommandRepository) {}
 
-  async execute(ctx:Context): Promise<Response.Message|Response.Message[]|string[]> {
+  async execute(ctx:Context): Promise<MessageDTO|MessageDTO[]|string[]> {
     const splitedMessage = ctx.message?.text?.substring(prefix.length).split(' ')
     if (!splitedMessage) return []
 

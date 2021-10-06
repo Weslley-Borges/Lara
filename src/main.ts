@@ -1,4 +1,3 @@
-/* eslint-disable quotes */
 import { messages, taskLogger, connect_mongo } from '@config'
 import { actions, send_response } from '@helpers'
 import { Bot } from 'grammy'
@@ -20,7 +19,7 @@ export const bot = ((): Bot => {
 
 
 bot.api.getMe().then(() => taskLogger.log_step('⚙️','Init', 'END', 'Lara Iniciada com sucesso'))
-bot.command("start", ctx => send_response(ctx,[{text: messages.lara_start}]))
+bot.command('start', ctx => send_response(ctx,[{text: messages.lara_start}]))
 bot.start({drop_pending_updates: true})
   
 actions(bot)

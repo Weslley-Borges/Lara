@@ -43,7 +43,7 @@ Here we have an example context:
 ````
 [
   {
-    "context": "Oi",
+    "contexts": ["Oi", "Olá"],
     "responses": [
       "Olá!",
       "Oi!",
