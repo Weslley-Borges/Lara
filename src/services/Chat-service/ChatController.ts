@@ -7,6 +7,7 @@ export class ChatController {
   constructor ( private chatUseCase:ChatUseCase ){}
 
   async handle(ctx:Context): Promise<void> {
-    send_response(ctx, await this.chatUseCase.execute(ctx))
+    const result = await this.chatUseCase.execute(ctx)
+    if (result) send_response(ctx, result)
   }
 }

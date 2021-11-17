@@ -7,11 +7,10 @@
     <img src="https://img.shields.io/badge/License-MIT-blue.svg?style=for-the-badge" alt="License">
   </a>
 </p>
-<h6>Monorepo for Lara</h6>
 
 `Lara` is a [telegram](https://telegram.org/) bot written in
-`TypeScript` and `Python` for the [Node.js](https://nodejs.org/en/) runtime, it use the
-[telegraf](https://github.com/telegraf/telegraf) framework.
+`TypeScript` in the [Node.js](https://nodejs.org/en/) runtime, it use the
+GrammY framework.
 
 ---
 

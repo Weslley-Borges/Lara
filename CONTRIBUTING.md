@@ -43,20 +43,19 @@ Here we have an example context:
 ````
 [
   {
-    "contexts": ["Oi", "Olá"],
+    "contexts": ["Hi", "Hello"],
     "responses": [
-      "Olá!",
-      "Oi!",
-      "Eae, tudo em cima?",
+      "Hi!",
+      "Hello!",
+      "Hi, what's up?",
       "👋"
     ],
     "pos_responses": [
-      "O que você está fazendo?",
-      "Bora dar o nosso melhor hoje!"
+      "What are you doing?"
     ]
   }
 ]
 ```` 
 How to contribute:
-- Create one or several of these contexts (have fun),
-- Open a new Issue with these contexts, maintainers will review them
+- Create one or several of these contexts (have fun);
+- Open a new Issue with these contexts, maintainers will review them;

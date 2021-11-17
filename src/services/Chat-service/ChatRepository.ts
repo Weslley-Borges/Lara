@@ -10,7 +10,7 @@ export class ChatRepository implements IChatRepository {
   async get_response(ctx:Context): Promise<MessageDTO[]> {
     let responses:string[] = this.get_greetings(String(ctx.message?.text))
 
-    if (responses[0].length == 0 && String(ctx.message?.text).split(' ').length < 20)
+    if (responses[0].length == 0)
       responses = (await axios.get(`${process.env.LARA_API}chat`, {
         data:{message:ctx.message?.text, contexts:messageContexts}
       })).data.results

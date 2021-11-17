@@ -9,9 +9,11 @@ export class ChatUseCase {
     private chatRepository: ChatRepository,
   ){}
 
-  async execute(ctx:Context): Promise<MessageDTO[]> {
+  async execute(ctx:Context): Promise<MessageDTO[]|void> {
     if (ctx.chat?.type.includes('group'))
       await groupService.evaluate_message(ctx.chat.id, Number(ctx.from?.id))
-    return await this.chatRepository.get_response(ctx)
+
+    if (String(ctx.message?.text).split(' ').length < 20)
+      return await this.chatRepository.get_response(ctx)
   }
 }

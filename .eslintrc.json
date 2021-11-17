@@ -32,7 +32,6 @@
       { "selector": ["variableLike", "classMethod"], "format": ["snake_case"] },
       { "selector": ["variable"], "modifiers": ["const"], "format": ["camelCase"] },
       { "selector": ["class", "interface"], "format": ["PascalCase"] }
-      // { "selector": "variable", "modifiers": "const", "format": ["camelCase", "PascalCase", "UPPER_CASE"] }
     ]
   }
 }

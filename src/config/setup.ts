@@ -17,7 +17,7 @@ export async function connect_mongo() {
   mongoose.set('useUnifiedTopology', true)
 
   const url = process.argv.includes('--db-test') || process.argv.includes('test')
-    ? possibleConnections.localDB : possibleConnections.localDB
+    ? possibleConnections.localDB : possibleConnections.prodDB
 
   await mongoose.connect(url)
     .then(() => new TaskLogger().log_step('✅','DATABASE', 'END', 'Banco de dados iniciado com sucesso'))
@@ -28,3 +28,4 @@ export async function connect_mongo() {
 export const prefix = '!'
 export const taskLogger = new TaskLogger
 export const greetings = JSON.parse(String(fs.readFileSync('src/config/greetings.json')))
+export const messageContexts = JSON.parse(String(fs.readFileSync('src/config/contexts.json')))
